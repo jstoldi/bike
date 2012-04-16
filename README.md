@@ -30,7 +30,7 @@ then run the tests:
 ## Contributors
 
 ```
-owner: Gabriele Di Stefano <gabriele.ds@gmail.com>
+Gabriele Di Stefano <gabriele.ds@gmail.com>
 ```
 
 ## License 
