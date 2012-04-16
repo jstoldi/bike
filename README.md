@@ -11,8 +11,27 @@
 
 ## Quick Start
 
- .....
+ ...
 
+## Features
+
+  * ...
+
+## Running Tests
+
+To run the test suite first invoke the following command within the repo, installing the development dependencies:
+
+    $ npm install
+
+then run the tests:
+
+    $ make test
+
+## Contributors
+
+```
+owner: Gabriele Di Stefano <gabriele.ds@gmail.com>
+```
 
 ## License 
 
