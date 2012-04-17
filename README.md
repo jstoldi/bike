@@ -1,5 +1,8 @@
+ [![Build Status](https://secure.travis-ci.org/behere/behere-klass.png)](http://travis-ci.org/behere/behere-klass)
 
-  Module "klass" for [behere](http://github.com/behere/behere).
+# Behere Klass System
+
+  Module "klass" for [behere](http://github.com/behere/behere)
 
 ## Installation
 
