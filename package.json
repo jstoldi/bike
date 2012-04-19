@@ -16,5 +16,16 @@
     "underscore": "1.x.x"
   },
   "devDependencies": {},
-  "optionalDependencies": {}
+  "optionalDependencies": {},
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "optionalDependencies": {},
+  "bin": {
+    "behere-network": "./bin/behere-klass"
+  },
+  "scripts": {
+    "test": "make test"
+  }
 }
