@@ -1,8 +1,5 @@
 *.log
 *.pid
 .git*
-docs/
-examples/
-test/
 .project
 node_modules/
