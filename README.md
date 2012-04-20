@@ -1,7 +1,7 @@
 > [![Build Status](https://secure.travis-ci.org/behere/behere-klass.png)](http://travis-ci.org/behere/behere-klass)
 
 > version
-**1.1.0**
+**1.0.0**
 (stable) - [History](https://github.com/behere/behere-klass/blob/master/HISTORY.md)
 
 
