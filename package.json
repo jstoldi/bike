@@ -2,7 +2,7 @@
   "author": "Gabriele Di Stefano <gabriele.ds@gmail.com>",
   "name": "behere-klass",
   "description": "Behere Framework - Module Klass",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/behere/behere-klass.git"
