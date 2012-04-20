@@ -7,7 +7,7 @@
 
 # Behere Klass System
 
-  Module "klass" for [behere](http://github.com/behere/behere)
+  Module `klass` for [behere](http://github.com/behere/behere)
 
 ## Installation
 
