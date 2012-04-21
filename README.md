@@ -14,9 +14,9 @@
 
     $ npm install behere-klass
 
-  Dependencies:
+  Optional Dependencies:
 
-  * [behere](http://github.com/behere/behere) (Core)
+  * [behere](http://github.com/behere/behere) (Core) this is optional
 
 ## Quick Start
 
