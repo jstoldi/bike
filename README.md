@@ -1,4 +1,4 @@
-    Publishing... :-)
+Publishing... :-)
 
 > [![Build Status](https://secure.travis-ci.org/behere/behere-klass.png)](http://travis-ci.org/behere/behere-klass)
 
