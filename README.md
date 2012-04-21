@@ -1,16 +1,16 @@
-    Publishing... :-)
+    Publishing... Not ready yet :-)
 
 > [![Build Status](https://secure.travis-ci.org/behere/behere-klass.png)](http://travis-ci.org/behere/behere-klass)
 
-> version
-**1.0.0** - [History](https://github.com/behere/behere-klass/blob/master/HISTORY.md)
-
+> (unstable) version 1.0.0 - [History](https://github.com/behere/behere-klass/blob/master/HISTORY.md)
 
 # Behere Klass System
 
   Module `klass` for [behere](http://github.com/behere/behere)
 
 ## Installation
+
+Install this using `npm` as follows
 
     $ npm install behere-klass
 

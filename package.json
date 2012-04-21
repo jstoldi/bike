@@ -15,8 +15,6 @@
     "uberproto": "1.x.x",
     "underscore": "1.x.x"
   },
-  "devDependencies": {},
-  "optionalDependencies": {},
   "devDependencies": {
     "mocha": "*",
     "should": "*"
