@@ -1,4 +1,4 @@
-Publishing... :-)
+    Publishing... :-)
 
 > [![Build Status](https://secure.travis-ci.org/behere/behere-klass.png)](http://travis-ci.org/behere/behere-klass)
 
@@ -42,7 +42,7 @@ then run the tests:
 Gabriele Di Stefano <gabriele.ds@gmail.com>
 ```
 
-![Build Logo](https://github.com/behere/behere-klass/raw/master/docs/behere_logo.png)
+![Behere Logo](https://github.com/behere/behere-klass/raw/master/docs/behere_logo.png)
 
 ## License 
 
