@@ -42,6 +42,8 @@ then run the tests:
 Gabriele Di Stefano <gabriele.ds@gmail.com>
 ```
 
+![Build Logo](https://github.com/behere/behere-klass/raw/master/docs/behere_logo.png)
+
 ## License 
 
 [The MIT License](https://github.com/behere/behere-klass/blob/master/LICENSE)
