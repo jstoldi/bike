@@ -7,7 +7,7 @@
   * Add examples
   * Make README usage documentation 
 
-1.0.0 / 2012-04-20 (stable)
+1.0.0 / 2012-04-20 (unstable)
 ---------------------------
 
   * Refactor of code
