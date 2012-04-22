@@ -2,7 +2,7 @@
 
 > [![Build Status](https://secure.travis-ci.org/behere/behere-klass.png)](http://travis-ci.org/behere/behere-klass)
 
-> (stable) version 0.4.0 - [History](https://github.com/behere/behere-klass/blob/master/HISTORY.md)
+> version 0.4.0 (stable) - [History](https://github.com/behere/behere-klass/blob/master/HISTORY.md)
 
 # Behere Klass System
 
