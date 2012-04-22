@@ -1,13 +1,19 @@
 # History
 
-1.1.0 / Roadmap
+0.5.0 / Roadmap
 ---------------
 
   * Add more tests
   * Add examples
   * Make README usage documentation 
 
-1.0.0 / 2012-04-20 (unstable)
+0.4.0 / 2012-04-20 (stable)
+---------------
+
+  * Refactor of code
+  * Added `delimiter` property
+
+0.3.0 / 2012-04-20 (unstable)
 ---------------------------
 
   * Refactor of code
