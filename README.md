@@ -1,6 +1,5 @@
-> ![Stage](https://github.com/behere/behere.github.com/raw/master/assets/stage/production.png)
-
-> [![Build Status](https://secure.travis-ci.org/behere/behere-klass.png)](http://travis-ci.org/behere/behere-klass)
+> ![Stage](https://github.com/behere/behere.github.com/raw/master/assets/stage/production.png)  
+[![Build Status](https://secure.travis-ci.org/behere/behere-klass.png)](http://travis-ci.org/behere/behere-klass)
 
 > version 0.4.0 (stable) - [History](https://github.com/behere/behere-klass/blob/master/HISTORY.md)
 
