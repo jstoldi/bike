@@ -5,7 +5,15 @@
 
   * Add more tests
   * Add examples
+  * Add examples on code comments
   * Make README usage documentation 
+
+0.4.1 / 2012-04-25 (stable)
+---------------
+
+  * Refactor of code
+  * Written comments on code
+  * Added documentation builder with `make docs`
 
 0.4.0 / 2012-04-20 (stable)
 ---------------
