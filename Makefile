@@ -4,4 +4,9 @@ test:
 	@./node_modules/.bin/mocha \
 		--reporter $(REPORTER)
 
-.PHONY: test
+docs:
+	@rm -rf docs
+	@mkdir -p docs
+	@node ./bin/docs
+
+.PHONY: docs test
