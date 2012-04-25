@@ -1,0 +1,905 @@
+{
+  "data": [
+    {
+      "file": "cache.js",
+      "comments": [
+        {
+          "tags": [],
+          "description": {
+            "full": "Behere - Klass\nCopyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>\nMIT Licensed",
+            "summary": "Behere - Klass\nCopyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>\nMIT Licensed",
+            "body": ""
+          },
+          "ignore": true
+        },
+        {
+          "tags": [],
+          "description": {
+            "full": "Module dependencies.",
+            "summary": "Module dependencies.",
+            "body": ""
+          },
+          "ignore": true,
+          "code": "var _ = require('underscore')\n  , path = require('path')\n  , klass = require('./klass')\n  , namespace = require('./namespace')\n  ;",
+          "ctx": {
+            "type": "declaration",
+            "name": "_",
+            "value": "require('underscore')",
+            "string": "_"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "param",
+              "types": [
+                "[String]"
+              ],
+              "name": "name",
+              "description": ""
+            },
+            {
+              "type": "param",
+              "types": [
+                "[*]"
+              ],
+              "name": "value",
+              "description": ""
+            },
+            {
+              "type": "return",
+              "types": [
+                "Object",
+                "*"
+              ],
+              "description": ""
+            },
+            {
+              "type": "api",
+              "visibility": "public"
+            }
+          ],
+          "description": {
+            "full": "Manager and placeholder of the cache object.\n\n## Examples\n\n   Klass.cache()\n     // get all\n     // => {Object}\n\n   Klass.cache('foo.myclass')\n     // get\n     // => {*}\n\n   Klass.cache('foo.myclass', *)\n     // set\n     // => {*}\n",
+            "summary": "Manager and placeholder of the cache object.",
+            "body": "## Examples\n\n   Klass.cache()\n     // get all\n     // => {Object}\n\n   Klass.cache('foo.myclass')\n     // get\n     // => {*}\n\n   Klass.cache('foo.myclass', *)\n     // set\n     // => {*}\n"
+          },
+          "isPrivate": false,
+          "ignore": false,
+          "code": "var Cache = function Cache(name, value){\n  if(!value && name){\n    value = Cache.get(name);\n    return value;\n  }else if(value && name){\n    return Cache.set.apply(this, arguments);\n  }\n  \n  return Cache.items;\n};\n\nexports = module.exports = Cache;",
+          "ctx": {
+            "type": "function",
+            "name": "Cache",
+            "string": "Cache()"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "type",
+              "types": [
+                "Object"
+              ]
+            },
+            {
+              "type": "api",
+              "visibility": "private"
+            }
+          ],
+          "description": {
+            "full": "Cache container.\n",
+            "summary": "Cache container.\n",
+            "body": ""
+          },
+          "isPrivate": true,
+          "ignore": false,
+          "code": "Cache.items = {};",
+          "ctx": {
+            "type": "property",
+            "receiver": "Cache",
+            "name": "items",
+            "value": "{}",
+            "string": "Cache.items"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "param",
+              "types": [
+                "String"
+              ],
+              "name": "name",
+              "description": ""
+            },
+            {
+              "type": "return",
+              "types": [
+                "*",
+                "null"
+              ],
+              "description": ""
+            },
+            {
+              "type": "api",
+              "visibility": "public"
+            }
+          ],
+          "description": {
+            "full": "Get an element from the cache container.\n",
+            "summary": "Get an element from the cache container.\n",
+            "body": ""
+          },
+          "isPrivate": false,
+          "ignore": false,
+          "code": "Cache.get = function(name){\n  if(!_.isString(name)) return name.prototype;\n  \n  var parent = Cache.items\n    ,  seed = null\n    ,  seeds = name.split(klass.delimiter)\n    ,  name = _.last(seeds)\n    ;\n  \n  for(var i = 0; i < seeds.length-1; i++){\n    seed = seeds[i];\n    \n    if(!parent[seed]){\n      Cache.require( seeds );\n    };\n\n    parent = parent[seed];\n  };\n  \n  if(!parent[name]) {\n    Cache.require( seeds );\n  }\n  \n  return parent[name] ? parent[name]._klass : null;\n};",
+          "ctx": {
+            "type": "method",
+            "receiver": "Cache",
+            "name": "get",
+            "string": "Cache.get()"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "param",
+              "types": [
+                "String"
+              ],
+              "name": "name",
+              "description": ""
+            },
+            {
+              "type": "param",
+              "types": [
+                "*"
+              ],
+              "name": "value",
+              "description": ""
+            },
+            {
+              "type": "return",
+              "types": [
+                "*"
+              ],
+              "description": ""
+            },
+            {
+              "type": "api",
+              "visibility": "public"
+            }
+          ],
+          "description": {
+            "full": "Add or replace a element in the cache container.\n\nReturns the give element;\n",
+            "summary": "Add or replace a element in the cache container.",
+            "body": "Returns the give element;\n"
+          },
+          "isPrivate": false,
+          "ignore": false,
+          "code": "Cache.set = function(name, value){\n\n  var parent = Cache.items\n    ,  seed = null\n    ,  seeds = name.split(klass.delimiter)\n    ,  name = _.last(seeds)\n    ;\n\n  for(var i = 0; i < seeds.length-1; i++){\n    seed = seeds[i];\n    \n    if(!parent[seed]){\n      parent[seed] = {\n        _name: null,\n        _klass: null\n      };\n    }\n    parent = parent[seed];\n  };\n\n  if(parent[name]){\n    parent[name]._name = name;\n    parent[name]._klass = value;\n  }else{\n    parent[name] = {\n      _name: name,\n      _klass: value\n    };\n  }\n  \n  return parent[name]._klass;\n};",
+          "ctx": {
+            "type": "method",
+            "receiver": "Cache",
+            "name": "set",
+            "string": "Cache.set()"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "param",
+              "types": [
+                "String"
+              ],
+              "name": "name",
+              "description": ""
+            },
+            {
+              "type": "return",
+              "types": [
+                "Object"
+              ],
+              "description": ""
+            },
+            {
+              "type": "api",
+              "visibility": "public"
+            }
+          ],
+          "description": {
+            "full": "To be implemented. Removes an element from the cache container.\n\nReturns the cache container.\n",
+            "summary": "To be implemented. Removes an element from the cache container.",
+            "body": "Returns the cache container.\n"
+          },
+          "isPrivate": false,
+          "ignore": false,
+          "code": "Cache.remove = function(name){\n  \n  // NEED TO CLEAR ALSO THE CACHE OF nodejs require\n  // with the \"may\" required cached object\n  // so it will be reloaded\n  // because otherwise the define function wont run again \n  \n  return Cache.items;\n};",
+          "ctx": {
+            "type": "method",
+            "receiver": "Cache",
+            "name": "remove",
+            "string": "Cache.remove()"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "return",
+              "types": [
+                "Object"
+              ],
+              "description": ""
+            },
+            {
+              "type": "api",
+              "visibility": "public"
+            }
+          ],
+          "description": {
+            "full": "Empty the cache container and returns it.\n",
+            "summary": "Empty the cache container and returns it.\n",
+            "body": ""
+          },
+          "isPrivate": false,
+          "ignore": false,
+          "code": "Cache.clear = function(){\n  return Cache.items = {};\n};",
+          "ctx": {
+            "type": "method",
+            "receiver": "Cache",
+            "name": "clear",
+            "string": "Cache.clear()"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "param",
+              "types": [
+                "String"
+              ],
+              "name": "name",
+              "description": ""
+            },
+            {
+              "type": "return",
+              "types": [
+                "*",
+                "null"
+              ],
+              "description": ""
+            },
+            {
+              "type": "api",
+              "visibility": "private"
+            }
+          ],
+          "description": {
+            "full": "Requires from `@node require` the missing library. \n",
+            "summary": "Requires from `@node require` the missing library. \n",
+            "body": ""
+          },
+          "isPrivate": true,
+          "ignore": false,
+          "code": "Cache.require = function(name){\n  var seeds = null\n    ,  link = null\n    ;\n  \n  if(_.isArray(name)){\n    seeds = name;\n    name = name.join(klass.delimiter);  \n  }else{\n    seeds = name.split(klass.delimiter);\n  }\n  \n  link = namespace.get(name);\n  \n  if(!link){\n    return false;\n  }\n\n  return require(path.join(\n    link.target,\n    _.last(seeds, (seeds.length - link.name.split(klass.delimiter).length)).join('/')\n  ));\n};",
+          "ctx": {
+            "type": "method",
+            "receiver": "Cache",
+            "name": "require",
+            "string": "Cache.require()"
+          }
+        }
+      ]
+    },
+    {
+      "file": "klass.js",
+      "comments": [
+        {
+          "tags": [],
+          "description": {
+            "full": "Behere - Klass\nCopyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>\nMIT Licensed",
+            "summary": "Behere - Klass\nCopyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>\nMIT Licensed",
+            "body": ""
+          },
+          "ignore": true
+        },
+        {
+          "tags": [],
+          "description": {
+            "full": "Module dependencies.",
+            "summary": "Module dependencies.",
+            "body": ""
+          },
+          "ignore": true,
+          "code": "var uberproto = require('uberproto')  // Thanks to http://github.com/daffl/uberproto\n  ;",
+          "ctx": {
+            "type": "declaration",
+            "name": "uberproto",
+            "value": "require('uberproto')  // Thanks to http://github.com/daffl/uberproto",
+            "string": "uberproto"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "api",
+              "visibility": "private"
+            }
+          ],
+          "description": {
+            "full": "Klass.\n",
+            "summary": "Klass.\n",
+            "body": ""
+          },
+          "isPrivate": true,
+          "ignore": false,
+          "code": "var Klass = function Klass(){};\n\nexports = module.exports = Klass;",
+          "ctx": {
+            "type": "function",
+            "name": "Klass",
+            "string": "Klass()"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "type",
+              "types": [
+                "String"
+              ]
+            },
+            {
+              "type": "api",
+              "visibility": "public"
+            }
+          ],
+          "description": {
+            "full": "Library version.\n\nReturns a string in the form of `n.n.n`.\n",
+            "summary": "Library version.",
+            "body": "Returns a string in the form of `n.n.n`.\n"
+          },
+          "isPrivate": false,
+          "ignore": false,
+          "code": "Klass.version = '0.4.0';",
+          "ctx": {
+            "type": "property",
+            "receiver": "Klass",
+            "name": "version",
+            "value": "'0.4.0'",
+            "string": "Klass.version"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "type",
+              "types": [
+                "String"
+              ]
+            },
+            {
+              "type": "api",
+              "visibility": "public"
+            }
+          ],
+          "description": {
+            "full": "Delimiter used among namespaces.\n\nDefault `.`.\n",
+            "summary": "Delimiter used among namespaces.",
+            "body": "Default `.`.\n"
+          },
+          "isPrivate": false,
+          "ignore": false,
+          "code": "Klass.delimiter = '.';",
+          "ctx": {
+            "type": "property",
+            "receiver": "Klass",
+            "name": "delimiter",
+            "value": "'.'",
+            "string": "Klass.delimiter"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "return",
+              "types": [
+                "Object"
+              ],
+              "description": ""
+            },
+            {
+              "type": "see",
+              "local": "namespace.js",
+              "visibility": "namespace.js"
+            },
+            {
+              "type": "api",
+              "visibility": "public"
+            }
+          ],
+          "description": {
+            "full": "Namespace manager reference.\n",
+            "summary": "Namespace manager reference.\n",
+            "body": ""
+          },
+          "isPrivate": false,
+          "ignore": false,
+          "code": "Klass.namespace = require('./namespace');",
+          "ctx": {
+            "type": "property",
+            "receiver": "Klass",
+            "name": "namespace",
+            "value": "require('./namespace')",
+            "string": "Klass.namespace"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "return",
+              "types": [
+                "Object"
+              ],
+              "description": ""
+            },
+            {
+              "type": "see",
+              "local": "cache.js",
+              "visibility": "cache.js"
+            },
+            {
+              "type": "api",
+              "visibility": "public"
+            }
+          ],
+          "description": {
+            "full": "Cache manager reference.\n",
+            "summary": "Cache manager reference.\n",
+            "body": ""
+          },
+          "isPrivate": false,
+          "ignore": false,
+          "code": "Klass.cache = require('./cache');",
+          "ctx": {
+            "type": "property",
+            "receiver": "Klass",
+            "name": "cache",
+            "value": "require('./cache')",
+            "string": "Klass.cache"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "return",
+              "types": [
+                "Object"
+              ],
+              "description": ""
+            },
+            {
+              "type": "see",
+              "title": "",
+              "url": "http://github.com/daffl/uberproto",
+              "visibility": "http://github.com/daffl/uberproto"
+            },
+            {
+              "type": "api",
+              "visibility": "private"
+            }
+          ],
+          "description": {
+            "full": "Base object interpolation.\n\nThanks to uberproto\nhttp://github.com/daffl/uberproto\n",
+            "summary": "Base object interpolation.",
+            "body": "Thanks to uberproto\nhttp://github.com/daffl/uberproto\n"
+          },
+          "isPrivate": true,
+          "ignore": false,
+          "code": "Klass.base = uberproto;",
+          "ctx": {
+            "type": "property",
+            "receiver": "Klass",
+            "name": "base",
+            "value": "uberproto",
+            "string": "Klass.base"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "param",
+              "types": [
+                "Object"
+              ],
+              "name": "target",
+              "description": ""
+            },
+            {
+              "type": "return",
+              "types": [
+                "Object"
+              ],
+              "description": ""
+            },
+            {
+              "type": "api",
+              "visibility": "public"
+            }
+          ],
+          "description": {
+            "full": "Attaches methods `define` and `create` on a given object.\n\nReturns the given object.\n",
+            "summary": "Attaches methods `define` and `create` on a given object.",
+            "body": "Returns the given object.\n"
+          },
+          "isPrivate": false,
+          "ignore": false,
+          "code": "Klass.attach = function(target){\n  if(target){\n    target.define = Klass.define;\n    target.create = Klass.create;\n  }\n  \n  return target;\n};",
+          "ctx": {
+            "type": "method",
+            "receiver": "Klass",
+            "name": "attach",
+            "string": "Klass.attach()"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "param",
+              "types": [
+                "String"
+              ],
+              "name": "name",
+              "description": ""
+            },
+            {
+              "type": "param",
+              "types": [
+                "Object"
+              ],
+              "name": "options",
+              "description": ""
+            },
+            {
+              "type": "param",
+              "types": [
+                "[Function]"
+              ],
+              "name": "callback",
+              "description": ""
+            },
+            {
+              "type": "return",
+              "types": [
+                "Object"
+              ],
+              "description": ""
+            },
+            {
+              "type": "api",
+              "visibility": "public"
+            }
+          ],
+          "description": {
+            "full": "Defines in the `Klass.cache` a new object.\n\nReturns the cached object.\n",
+            "summary": "Defines in the `Klass.cache` a new object.",
+            "body": "Returns the cached object.\n"
+          },
+          "isPrivate": false,
+          "ignore": false,
+          "code": "Klass.define = function(name, options, callback){\n  var obj = null\n    ;\n  \n  if(options && options.extend){\n    obj = Klass.cache.get(options.extend);\n    \n    delete options.extend;\n  }else{\n    obj = Klass.base;\n  }\n\n  if(options && options.mixins){\n    options.mixins.forEach(function(mixin){\n      mixin = Klass.cache.get(mixin);\n      obj = Klass.base.mixin(mixin, obj);\n    });\n    \n    delete options.mixins;\n  }\n  \n  if(options){\n    obj = Klass.base.extend(options, obj);\n  }\n  \n  Klass.cache.set(name, obj);\n  \n  if(callback){\n    callback.apply(obj, [name, options]);\n  }\n  \n  return obj;\n};",
+          "ctx": {
+            "type": "method",
+            "receiver": "Klass",
+            "name": "define",
+            "string": "Klass.define()"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "param",
+              "types": [
+                "String"
+              ],
+              "name": "name",
+              "description": ""
+            },
+            {
+              "type": "param",
+              "types": [
+                "Object"
+              ],
+              "name": "options",
+              "description": ""
+            },
+            {
+              "type": "param",
+              "types": [
+                "[Function]"
+              ],
+              "name": "callback",
+              "description": ""
+            },
+            {
+              "type": "return",
+              "types": [
+                "Object"
+              ],
+              "description": ""
+            },
+            {
+              "type": "api",
+              "visibility": "public"
+            }
+          ],
+          "description": {
+            "full": "Creates a new object giving a namespace and options\n\nReturns the object just created.\n",
+            "summary": "Creates a new object giving a namespace and options",
+            "body": "Returns the object just created.\n"
+          },
+          "isPrivate": false,
+          "ignore": false,
+          "code": "Klass.create = function(name, options, callback){\n  var obj = Klass.cache.get(name);\n  \n  if(options){\n    obj = Klass.base.extend(options, obj);\n  \n    obj = Klass.base.create.call(obj, options);\n  }else{\n    obj = obj.create();\n  }\n    \n  if(callback){\n    callback.apply(obj, [name, options]);\n  }\n  \n  return obj;\n};",
+          "ctx": {
+            "type": "method",
+            "receiver": "Klass",
+            "name": "create",
+            "string": "Klass.create()"
+          }
+        }
+      ]
+    },
+    {
+      "file": "namespace.js",
+      "comments": [
+        {
+          "tags": [],
+          "description": {
+            "full": "Behere - Klass\nCopyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>\nMIT Licensed",
+            "summary": "Behere - Klass\nCopyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>\nMIT Licensed",
+            "body": ""
+          },
+          "ignore": true
+        },
+        {
+          "tags": [],
+          "description": {
+            "full": "Module dependencies.",
+            "summary": "Module dependencies.",
+            "body": ""
+          },
+          "ignore": true,
+          "code": "var _ = require('underscore')\n  ;",
+          "ctx": {
+            "type": "declaration",
+            "name": "_",
+            "value": "require('underscore')",
+            "string": "_"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "param",
+              "types": [
+                "[String]"
+              ],
+              "name": "name",
+              "description": ""
+            },
+            {
+              "type": "param",
+              "types": [
+                "[String]"
+              ],
+              "name": "value",
+              "description": ""
+            },
+            {
+              "type": "return",
+              "types": [
+                "String"
+              ],
+              "description": ""
+            },
+            {
+              "type": "api",
+              "visibility": "public"
+            }
+          ],
+          "description": {
+            "full": "Manager and placeholder of the namespace object.\n\n## Examples\n\n   Klass.namespace()\n     // get all\n     // => []\n\n   Klass.namespace('foo')\n     // get\n     // => String\n\n   Klass.namespace('foo', './my/path/to/it')\n     // set\n     // => String\n",
+            "summary": "Manager and placeholder of the namespace object.",
+            "body": "## Examples\n\n   Klass.namespace()\n     // get all\n     // => []\n\n   Klass.namespace('foo')\n     // get\n     // => String\n\n   Klass.namespace('foo', './my/path/to/it')\n     // set\n     // => String\n"
+          },
+          "isPrivate": false,
+          "ignore": false,
+          "code": "var Namespace = function Namespace(name, value){\n  if(!value && name){\n    value = Namespace.get(name);\n    return value ? value.target : null;\n  }else if(value && name){\n    return Namespace.set.apply(this, arguments);\n  }\n  \n  return Namespace.items;\n};\n\nexports = module.exports = Namespace;",
+          "ctx": {
+            "type": "function",
+            "name": "Namespace",
+            "string": "Namespace()"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "type",
+              "types": [
+                "Array"
+              ]
+            },
+            {
+              "type": "api",
+              "visibility": "private"
+            }
+          ],
+          "description": {
+            "full": "Namespace container.\n",
+            "summary": "Namespace container.\n",
+            "body": ""
+          },
+          "isPrivate": true,
+          "ignore": false,
+          "code": "Namespace.items = [];",
+          "ctx": {
+            "type": "property",
+            "receiver": "Namespace",
+            "name": "items",
+            "value": "[]",
+            "string": "Namespace.items"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "param",
+              "types": [
+                "String"
+              ],
+              "name": "name",
+              "description": ""
+            },
+            {
+              "type": "return",
+              "types": [
+                "String",
+                "null"
+              ],
+              "description": ""
+            },
+            {
+              "type": "api",
+              "visibility": "public"
+            }
+          ],
+          "description": {
+            "full": "Get the target of a given namespace.\n",
+            "summary": "Get the target of a given namespace.\n",
+            "body": ""
+          },
+          "isPrivate": false,
+          "ignore": false,
+          "code": "Namespace.get = function(name){\n  return _.find(Namespace.items.sort(function(first, second){\n    return second.name.length - first.name.length;\n  }), function(link){\n    return (name.indexOf(link.name) != -1);\n  });\n  \n  return null;\n};",
+          "ctx": {
+            "type": "method",
+            "receiver": "Namespace",
+            "name": "get",
+            "string": "Namespace.get()"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "param",
+              "types": [
+                "String"
+              ],
+              "name": "name",
+              "description": ""
+            },
+            {
+              "type": "param",
+              "types": [
+                "String"
+              ],
+              "name": "value",
+              "description": ""
+            },
+            {
+              "type": "return",
+              "types": [
+                "String"
+              ],
+              "description": ""
+            },
+            {
+              "type": "api",
+              "visibility": "public"
+            }
+          ],
+          "description": {
+            "full": "Add or replace a target of a given namespace.\n\nReturns the give target;\n",
+            "summary": "Add or replace a target of a given namespace.",
+            "body": "Returns the give target;\n"
+          },
+          "isPrivate": false,
+          "ignore": false,
+          "code": "Namespace.set = function(name, value){\n  var ns = null;\n  \n  if(!_.find(Namespace.items, function(ns){\n    return ns.name === name;\n  })){\n    ns = Namespace.items[Namespace.items.push({\n      name: name,\n      target: value\n    }) - 1];\n  }else{\n    ns = Namespace.get(name);\n    ns.target = value;\n  }\n  \n  return ns;\n};",
+          "ctx": {
+            "type": "method",
+            "receiver": "Namespace",
+            "name": "set",
+            "string": "Namespace.set()"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "param",
+              "types": [
+                "String"
+              ],
+              "name": "name",
+              "description": ""
+            },
+            {
+              "type": "return",
+              "types": [
+                "Array"
+              ],
+              "description": ""
+            },
+            {
+              "type": "api",
+              "visibility": "public"
+            }
+          ],
+          "description": {
+            "full": "Removes a namespace.\n\nReturns the namespace container.\n",
+            "summary": "Removes a namespace.",
+            "body": "Returns the namespace container.\n"
+          },
+          "isPrivate": false,
+          "ignore": false,
+          "code": "Namespace.remove = function(name){\n  return Namespace.items = _.reject(Namespace.items, function(ns){\n    return ns.name == name;\n  });\n};",
+          "ctx": {
+            "type": "method",
+            "receiver": "Namespace",
+            "name": "remove",
+            "string": "Namespace.remove()"
+          }
+        },
+        {
+          "tags": [
+            {
+              "type": "return",
+              "types": [
+                "Array"
+              ],
+              "description": ""
+            },
+            {
+              "type": "api",
+              "visibility": "public"
+            }
+          ],
+          "description": {
+            "full": "Empty the namespace container and returns it.\n",
+            "summary": "Empty the namespace container and returns it.\n",
+            "body": ""
+          },
+          "isPrivate": false,
+          "ignore": false,
+          "code": "Namespace.clear = function(){\n  return Namespace.items = [];\n};",
+          "ctx": {
+            "type": "method",
+            "receiver": "Namespace",
+            "name": "clear",
+            "string": "Namespace.clear()"
+          }
+        }
+      ]
+    }
+  ]
+}
