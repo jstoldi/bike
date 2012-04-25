@@ -11,13 +11,84 @@
 
 ## Installation
 
-Install this using `npm` as follows
+Install this using `npm` as follows for standalone use
 
     $ npm install behere-klass
 
 ## Quick Start
 
- ...
+### Define a class
+
+This will *register* a class.
+
+    var Klass = require('behere-klass');
+    
+    Klass.define('animal', {
+      move: function(){
+        return 'i move'
+      }
+    });
+    
+    Klass.create('animal').move();
+      // => i move
+
+behere use: `behere.define()`
+
+### Create a class
+
+    var animal = Klass.create('animal');
+    
+    animal.move();
+      // => i move
+
+behere use: `behere.create()`
+
+### Extend a class
+
+Extending a class will allow to inherit all the properties and methods from the extended object.
+To call the parent method use the `this._super()` syntax.
+
+    Klass.define('cat', {
+      extend: 'animal',
+      move: function(){
+        return this._super() + ', run and jump'
+      }
+    });
+    
+    var cat = Klass.create('cat');
+    
+    cat.move();
+      // => i move, run and jump'
+
+### Use namespaces
+
+The namespace will help you organize classes in a tree structure.
+
+    Klass.define('animal', {
+      /* ... */
+    });
+    
+    Klass.define('animal.cat', {
+      extend: 'animal'
+      /* ... */
+    });
+    
+    Klass.define('animal.cat.Sophie', {
+      extend: 'animal.cat'
+      /* ... */
+    });
+    
+    // And more..
+    
+    Klass.define('animal.dog', {
+      extend: 'animal'
+      /* ... */
+    });
+    
+    Klass.define('Monkey', {  // Monkey is the name of my dog :-)
+      extend: 'animal.dog'
+      /* ... */
+    });
 
 ## Features
 
