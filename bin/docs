@@ -72,3 +72,5 @@ ret.forEach(function(file){
   });  
   fs.writeFileSync(path.join(output, file.file).replace('.js', '.md'), markdown.join('\n'), 'utf-8');
 });
+
+console.log('Documentation build successfully');

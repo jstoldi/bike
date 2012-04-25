@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 
-/**
- * Module dependencies
+/*!
+ * Behere - Klass
+ * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
+ * MIT Licensed
+ */
+
+/*!
+ * Module dependencies.
  */
