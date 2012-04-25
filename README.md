@@ -3,7 +3,7 @@
 
 > version 0.4.1 (stable) - [History](https://github.com/behere/behere-klass/blob/master/HISTORY.md)
 
-# Behere Klass System
+# Klass
 
   Module `klass` for [behere](http://github.com/behere/behere)
 
