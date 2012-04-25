@@ -4,18 +4,16 @@
 > version 0.4.2 (stable) - [History](https://github.com/behere/behere-klass/blob/master/HISTORY.md)
 
 # Klass
-
-  Module `klass` for [behere](http://github.com/behere/behere)
+  
+  Organize your classes through namespaces, extend or mix them.
+  
+  This module can be used `standalone` or inside [behere framework](http://github.com/behere/behere) as `behere.klass`.
 
 ## Installation
 
 Install this using `npm` as follows
 
     $ npm install behere-klass
-
-  Optional Dependencies:
-
-  * [behere](http://github.com/behere/behere) (Core) this is optional
 
 ## Quick Start
 
