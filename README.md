@@ -21,25 +21,29 @@ Install this using `npm` as follows for standalone use
 
 This will *register* a class.
 
-    var Klass = require('behere-klass');
-    
-    Klass.define('animal', {
-      move: function(){
-        return 'i move'
-      }
-    });
-    
-    Klass.create('animal').move();
-      // => i move
+```javascript
+var Klass = require('behere-klass');
+
+Klass.define('animal', {
+  move: function(){
+    return 'i move'
+  }
+});
+
+Klass.create('animal').move();
+  // => i move
+```
 
 behere use: `behere.define()`
 
 ### Create a class
 
-    var animal = Klass.create('animal');
-    
-    animal.move();
-      // => i move
+```javascript
+var animal = Klass.create('animal');
+
+animal.move();
+  // => i move
+```
 
 behere use: `behere.create()`
 
@@ -48,47 +52,72 @@ behere use: `behere.create()`
 Extending a class will allow to inherit all the properties and methods from the extended object.
 To call the parent method use the `this._super()` syntax.
 
-    Klass.define('cat', {
-      extend: 'animal',
-      move: function(){
-        return this._super() + ', run and jump'
-      }
-    });
-    
-    var cat = Klass.create('cat');
-    
-    cat.move();
-      // => i move, run and jump'
+```javascript
+Klass.define('cat', {
+  extend: 'animal',
+  move: function(){
+    return this._super() + ', run and jump'
+  }
+});
+
+var cat = Klass.create('cat');
+
+cat.move();
+  // => i move, run and jump'
+```
 
 ### Use namespaces
 
 The namespace will help you organize classes in a tree structure.
 
-    Klass.define('animal', {
-      /* ... */
-    });
-    
-    Klass.define('animal.cat', {
-      extend: 'animal'
-      /* ... */
-    });
-    
-    Klass.define('animal.cat.Sophie', {
-      extend: 'animal.cat'
-      /* ... */
-    });
-    
-    // And more..
-    
-    Klass.define('animal.dog', {
-      extend: 'animal'
-      /* ... */
-    });
-    
-    Klass.define('Monkey', {  // Monkey is the name of my dog :-)
-      extend: 'animal.dog'
-      /* ... */
-    });
+```javascript
+Klass.define('animal', {
+  /* ... */
+});
+
+Klass.define('animal.cat', {
+  extend: 'animal'
+  /* ... */
+});
+
+Klass.define('animal.cat.Sophie', {
+  extend: 'animal.cat'
+  /* ... */
+});
+
+// And more..
+
+Klass.define('animal.dog', {
+  extend: 'animal'
+  /* ... */
+});
+
+Klass.define('Monkey', {  // Monkey is the name of my dog :-)
+  extend: 'animal.dog'
+  /* ... */
+});
+```
+
+### Load missing libraries
+
+In most of the cases your code will need to `require` libraries.
+With *Klass* what you need to do it so define namespaces and its system location.
+
+```javascript
+Klass.namespace('foo', '/my/path/to/it');
+
+Klass.create('foo.animal');
+  // => this will create a class defined in '/my/path/to/it/animal.js'
+```
+
+Works the same extending or mixing:
+
+```javascript
+Klass.define('Sophie', {
+  extend: 'foo.animal.cat'
+});
+  // => This will extend the class defined in '/my/path/to/it/animal/cat.js'
+```
 
 ## Features
 
