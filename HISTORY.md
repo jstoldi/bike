@@ -8,6 +8,19 @@
   * Add examples on code comments
   * Make README usage documentation 
 
+0.4.3 / 2012-05-06 (stable)
+---------------
+
+  * Cache take to global scope
+  * Added namespace "ns" on the attach method
+  * Bug fixed on cache.get, removed return ".prototype"
+
+0.4.2 / 2012-05-01 (stable)
+---------------
+
+  * Comments on cache
+  * Comments on namespace
+  
 0.4.1 / 2012-04-25 (stable)
 ---------------
 
