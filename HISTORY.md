@@ -13,6 +13,7 @@
 
   * Cache take to global scope
   * Added namespace "ns" on the attach method
+  * Created tests (20)
   * Bug fixed on cache.get, removed return ".prototype"
 
 0.4.2 / 2012-05-01 (stable)
