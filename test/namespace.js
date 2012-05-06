@@ -8,13 +8,12 @@ describe('Klass', function(){
   /*
    * #namespace()
    */
-  describe('#namespace()', function(){
-    
+  
+  describe('#namespace()', function(){  
     
     it('should return an array', function(){    
       Klass.namespace().should.be.an.instanceof(Array);
     })
-    
     
     it('should set namespaces with name and target properties', function(){
       var ns = Klass.namespace('foo', '-/foo/-');
@@ -23,7 +22,6 @@ describe('Klass', function(){
       ns.should.have.property('target', '-/foo/-');
     })
     
-    
     it('should override the target if the name already exist', function(){
       var ns = Klass.namespace('foo', 'foo---');
       ns.should.be.a('object');
@@ -31,15 +29,16 @@ describe('Klass', function(){
       ns.should.have.property('target', 'foo---');
     })
     
-    
     it('should return the target related to the given name', function(){
       var ns = Klass.namespace('sophie', 'cat');
       Klass.namespace('sophie').should.equal('cat');
     })
     
+    /*
+     * #clear()
+     */
 
     describe('#clear()', function(){
-  
   
       it('should clear namespace and return an array', function(){
         Klass.namespace.clear();
@@ -48,18 +47,18 @@ describe('Klass', function(){
         Klass.namespace.clear().should.be.an.instanceof(Array).with.lengthOf(0);
         Klass.namespace().should.be.an.instanceof(Array).with.lengthOf(0);
       })
-        
   
     })
     
+    /*
+     * #remove()
+     */
 
     describe('#remove()', function(){
-      
       
       it('should return the items', function(){
         Klass.namespace.remove().should.be.an.instanceof(Array);
       })
-      
       
       it('should remove a give item and return items', function(){
         Klass.namespace.clear();
@@ -71,12 +70,9 @@ describe('Klass', function(){
         Klass.namespace.remove('sophie').should.be.an.instanceof(Array);
         Klass.namespace().should.be.an.instanceof(Array).with.lengthOf(1);
       })
-      
   
     })
     
-    
   })
-  
   
 })
