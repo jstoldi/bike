@@ -31,7 +31,7 @@ Klass.define('animal', {
 });
 
 Klass.create('animal').move();
-  // => i move
+// => 'i move'
 ```
 
 behere use: `behere.define()`
@@ -42,7 +42,7 @@ behere use: `behere.define()`
 var animal = Klass.create('animal');
 
 animal.move();
-  // => i move
+// => 'i move'
 ```
 
 behere use: `behere.create()`
@@ -63,7 +63,7 @@ Klass.define('cat', {
 var cat = Klass.create('cat');
 
 cat.move();
-  // => i move, run and jump'
+// => 'i move, run and jump'
 ```
 
 ### Use namespaces
@@ -107,7 +107,7 @@ With *Klass* what you need to do it so define namespaces and its system location
 Klass.namespace('foo', '/my/path/to/it');
 
 Klass.create('foo.animal');
-  // => this will create a class defined in '/my/path/to/it/animal.js'
+// => this will create a class defined in '/my/path/to/it/animal.js'
 ```
 
 Works the same extending or mixing:
@@ -116,7 +116,7 @@ Works the same extending or mixing:
 Klass.define('Sophie', {
   extend: 'foo.animal.cat'
 });
-  // => This will extend the class defined in '/my/path/to/it/animal/cat.js'
+// => This will extend the class defined in '/my/path/to/it/animal/cat.js'
 ```
 
 ## Features
