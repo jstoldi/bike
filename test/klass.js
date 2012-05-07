@@ -75,6 +75,24 @@ describe('Klass', function(){
       Klass.create('test.sophie').name().should.equal('Ciao, sono Sophie ! animal cat, very playfull!!')
     })
     
+    it('should initialize just once the class', function(){
+      Klass.define('count', {
+        singleton: true,
+        count: '1'
+      });
+      
+      var a = Klass.create('count');
+      var b = Klass.create('count');
+      
+      a.count.should.equal('1');
+      b.count.should.equal('1');
+      
+      a.count = '2';
+      
+      a.count.should.equal('2');
+      b.count.should.equal('2');
+    })
+    
   })
   
 })

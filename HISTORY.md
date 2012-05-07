@@ -6,7 +6,14 @@
   * Add more tests
   * Add examples
   * Add examples on code comments
-  * Make README usage documentation 
+  * Make README usage documentation
+  * Add singletons get/set/remove (used by klass#create()) in the cache object
+
+0.4.4 / in progress
+---------------
+
+  * #cache.attach() changed #ns() to #namespace()
+  * Added singleton functionality
 
 0.4.3 / 2012-05-06 (stable)
 ---------------
