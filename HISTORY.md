@@ -14,6 +14,7 @@
 
   * #cache.attach() changed #ns() to #namespace()
   * Added singleton functionality
+  * Updated to uberproto 1.0.2 (custom init method name)
 
 0.4.3 / 2012-05-06 (stable)
 ---------------
