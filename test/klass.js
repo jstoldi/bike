@@ -93,6 +93,31 @@ describe('Klass', function(){
       b.count.should.equal('2');
     })
     
+    it('should work with a custom constructor name', function(){
+      Klass.define('aaa', {
+        __init: 'initialize',
+        name: 'Angelo',
+        speak: function(){
+          return this.name;
+        }
+      });
+      
+      Klass.define('bbb', {
+        extend: 'aaa',
+        speak: function(){
+          return this._super.apply(this, arguments);
+        }
+      });
+      
+      var bbb = Klass.create('bbb',{
+        initialize: function(){
+          this.name = 'Gabriele'
+        }
+      });
+      
+      bbb.speak().should.equal('Gabriele')
+    })
+    
   })
   
 })
