@@ -8,6 +8,7 @@
   * Add examples on code comments
   * Make README usage documentation
   * Add singletons get/set/remove (used by klass#create()) in the cache object
+  * Make `initialize` the default init method
 
 0.4.4 / in progress
 ---------------
@@ -15,14 +16,15 @@
   * #cache.attach() changed #ns() to #namespace()
   * Added singleton functionality
   * Updated to uberproto 1.0.2 (custom init method name)
+  * Created Klass.base, native class for all extensions
 
 0.4.3 / 2012-05-06 (stable)
 ---------------
 
   * Cache take to global scope
-  * Added namespace "ns" on the attach method
+  * Added namespace `ns` on the attach method
   * Created tests (20)
-  * Bug fixed on cache.get, removed return ".prototype"
+  * Bug fixed on cache.get, removed return `.prototype`
 
 0.4.2 / 2012-05-01 (stable)
 ---------------

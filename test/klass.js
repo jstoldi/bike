@@ -118,6 +118,24 @@ describe('Klass', function(){
       bbb.speak().should.equal('Gabriele')
     })
     
+    it('should extend from Klass.base and have initialize as init method', function(){
+      /*
+      Klass.define('ccc', Klass.base);
+      
+      Klass.define('ddd', {
+        extend: 'ccc',
+        name: 'Gabriele',
+        initialize: function(){
+          this.name += '!!!';
+        }
+      });
+      
+      var ddd = Klass.create('ddd');
+      
+      ddd.name.should.equal('Gabriele!!!')
+      */
+    })
+    
   })
   
 })
