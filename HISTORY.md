@@ -1,7 +1,7 @@
 # History
 
-0.5.0 / Roadmap
----------------
+0.5.0 / (roadmap)
+------------------
 
   * Add more tests
   * Add examples
@@ -10,43 +10,49 @@
   * Add singletons get/set/remove (used by klass#create()) in the cache object
   * Make `initialize` the default init method
 
-0.4.4 / in progress
----------------
+0.4.5 / (in progress)
+------------------
 
-  * #cache.attach() changed #ns() to #namespace()
+0.4.4 / 2012-05-19
+------------------
+
+  * #cache.attach() changed #ns() to #namespace(), removed #klass
   * Added singleton functionality
   * Updated to uberproto 1.0.2 (custom init method name)
   * Created Klass.base, native class for all extensions
+  * Added tests (23)
+  * __init function is now configured to be called just once, no matter what.
+  * Added browser support. Now Klass can be used on node and on the browser :-)
 
 0.4.3 / 2012-05-06 (stable)
----------------
+------------------
 
-  * Cache take to global scope
+  * Cache taken to global scope
   * Added namespace `ns` on the attach method
   * Created tests (20)
   * Bug fixed on cache.get, removed return `.prototype`
 
 0.4.2 / 2012-05-01 (stable)
----------------
+------------------
 
   * Comments on cache
   * Comments on namespace
   
 0.4.1 / 2012-04-25 (stable)
----------------
+------------------
 
   * Refactor of code
   * Written comments on code
   * Added documentation builder with `make docs`
 
 0.4.0 / 2012-04-20 (stable)
----------------
+------------------
 
   * Refactor of code
   * Added `delimiter` property
 
 0.3.0 / 2012-04-20 (unstable)
----------------------------
+------------------
 
   * Refactor of code
   * Added tests suite with "mocha" and "should"

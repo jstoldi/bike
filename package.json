@@ -16,6 +16,7 @@
     "underscore": "1.x.x"
   },
   "devDependencies": {
+    "uglify-js": "1.x.x",
     "wrench": "*",
     "dox": "*",
     "mocha": "*",
