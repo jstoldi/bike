@@ -9,10 +9,15 @@
   * Make README usage documentation
   * Add singletons get/set/remove (used by klass#create()) in the cache object
   * Make `initialize` the default init method
+  * Change browser build version with https://github.com/LearnBoost/browserbuild
+  * Make `version` variable replace with * directly in MakeFile
 
 0.4.5 / (in progress)
 ------------------
 
+  * Added tests (24)
+  * Changed order of definition: extend then mixins.
+  
 0.4.4 / 2012-05-19
 ------------------
 

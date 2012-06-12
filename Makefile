@@ -1,9 +1,12 @@
+
 SRC = $(shell find lib -name "*.js" -type f)
 UGLIFY = $(shell find node_modules -name "uglifyjs" -type f)
 UGLIFY_FLAGS =
+BROWSERBUILD = $(shell find node_modules -name "browserbuild" -type f)
+BROWSERBUILD_FLAGS =-b lib/ -g klass -m klass.js
 REPORTER = dot
 
-all: clean klass.min.js test docs copy-to-repo
+all: clean runtime.js klass.min.js test docs copy-to-repo
 
 clean:
 	@rm -rf docs
@@ -12,6 +15,9 @@ clean:
 
 klass.js: $(SRC)
 	@node support/compile $^
+
+runtime.js: ${SRC}
+	${BROWSERBUILD} ${BROWSERBUILD_FLAGS} ${SRC} > $@
 
 klass.min.js: klass.js
 	@$(UGLIFY) $(UGLIFY_FLAGS) $< > $@ \
@@ -30,4 +36,4 @@ copy-to-repo:
 	@cp klass.js ../../repository/behere/wrap-klass/debug/wrap-klass.debug.js
 	@cp klass.min.js ../../repository/behere/wrap-klass/min/wrap-klass.min.js
 
-.PHONY: docs test clean
+.PHONY: clean test docs

@@ -1,58 +1,13 @@
-(function() {
-
-// CommonJS require()
-
-function require(p){
-    var path = require.resolve(p)
-      , mod = require.modules[path];
-    if (!mod) throw new Error('failed to require "' + p + '"');
-    if (!mod.exports) {
-      mod.exports = {};
-      mod.call(mod.exports, mod, mod.exports, require.relative(path));
-    }
-    return mod.exports;
-  }
-
-require.modules = {};
-
-require.resolve = function (path){
-    var orig = path
-      , reg = path + '.js'
-      , index = path + '/index.js';
-    return require.modules[reg] && reg
-      || require.modules[index] && index
-      || orig;
-  };
-
-require.register = function (path, fn){
-    require.modules[path] = fn;
-  };
-
-require.relative = function (parent) {
-    return function(p){
-      if ('.' != p.charAt(0)) return require(p);
-      
-      var path = parent.split('/')
-        , segs = p.split('/');
-      path.pop();
-      
-      for (var i = 0; i < segs.length; i++) {
-        var seg = segs[i];
-        if ('..' == seg) path.pop();
-        else if ('.' != seg) path.push(seg);
-      }
-
-      return require(path.join('/'));
-    };
-  };
-
-
-require.register("klass.js", function(module, exports, require){
+(function(){var global = this;function debug(){return debug};function require(p, parent){ var path = require.resolve(p) , mod = require.modules[path]; if (!mod) throw new Error('failed to require "' + p + '" from ' + parent); if (!mod.exports) { mod.exports = {}; mod.call(mod.exports, mod, mod.exports, require.relative(path), global); } return mod.exports;}require.modules = {};require.resolve = function(path){ var orig = path , reg = path + '.js' , index = path + '/index.js'; return require.modules[reg] && reg || require.modules[index] && index || orig;};require.register = function(path, fn){ require.modules[path] = fn;};require.relative = function(parent) { return function(p){ if ('debug' == p) return debug; if ('.' != p.charAt(0)) return require(p); var path = parent.split('/') , segs = p.split('/'); path.pop(); for (var i = 0; i < segs.length; i++) { var seg = segs[i]; if ('..' == seg) path.pop(); else if ('.' != seg) path.push(seg); } return require(path.join('/'), parent); };};require.register("klass.js", function(module, exports, require, global){
 /*!
  * Behere
  * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
  * MIT Licensed
  */
+
+
+
+
 
 
 /**
@@ -253,9 +208,7 @@ Klass.create = function(name, plain, options, callback){
   
   return obj;
 };
-}); // module: klass.js
-
-require.register("klass/cache.js", function(module, exports, require){
+});require.register("klass/cache.js", function(module, exports, require, global){
 /*!
  * Behere
  * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
@@ -264,6 +217,10 @@ require.register("klass/cache.js", function(module, exports, require){
 
 var klass = require('../klass')
   , namespace = require('./namespace')
+
+
+
+
   ;
 
 /**
@@ -316,7 +273,12 @@ Cache.singletons = {};
  * @api private
  */
 
-Cache.items = window;
+
+
+
+// if browser
+//Cache.items = window;
+// end
   
 /**
  * Get an element from the cache container.
@@ -496,9 +458,7 @@ Cache.require = function(name, status){
 
 exports = module.exports = Cache;
  
-}); // module: klass/cache.js
-
-require.register("klass/base.js", function(module, exports, require){
+});require.register("klass/base.js", function(module, exports, require, global){
 /*!
  * Behere
  * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
@@ -518,9 +478,7 @@ var Base = exports = module.exports = Proto.extend({
   
 });
  
-}); // module: klass/base.js
-
-require.register("klass/proto.js", function(module, exports, require){
+});require.register("klass/proto.js", function(module, exports, require, global){
 /*!
  * Behere
  * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
@@ -528,40 +486,48 @@ require.register("klass/proto.js", function(module, exports, require){
  */
 
 
-if(typeof Object.create !== 'function'){
-  /**
-   * Object.create
-   * 
-   * @see https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/create
-   */
-  Object.create = function(obj){
-    if(arguments.length > 1){
-      throw new Error('Object.create implementation only accepts the first parameter.');
-    }
 
-    function F() {}
-    F.prototype = obj;
 
-    return new F();
-  };
-};
 
-if(typeof Object.getPrototypeOf !== 'function'){
-  /**
-   * Object.getPrototypeOf
-   * 
-   * @see http://ejohn.org/blog/objectgetprototypeof/
-   */  
-  if(typeof 'test'.__proto__ === 'object'){
-    Object.getPrototypeOf = function(object){
-      return object.__proto__;
-    };
-  }else{
-    Object.getPrototypeOf = function(object){
-      return object.constructor.prototype;
-    };
-  }
-};
+
+// if browser
+//if(typeof Object.create !== 'function'){
+//  /**
+//   * Object.create
+//   * 
+//   * @see https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/create
+//   */
+//  Object.create = function(obj){
+//    if(arguments.length > 1){
+//      throw new Error('Object.create implementation only accepts the first parameter.');
+//    }
+//
+//    function F() {}
+//    F.prototype = obj;
+//
+//    return new F();
+//  };
+//};
+// end
+
+// if browser
+//if(typeof Object.getPrototypeOf !== 'function'){
+//  /**
+//   * Object.getPrototypeOf
+//   * 
+//   * @see http://ejohn.org/blog/objectgetprototypeof/
+//   */  
+//  if(typeof 'test'.__proto__ === 'object'){
+//    Object.getPrototypeOf = function(object){
+//      return object.__proto__;
+//    };
+//  }else{
+//    Object.getPrototypeOf = function(object){
+//      return object.constructor.prototype;
+//    };
+//  }
+//};
+// end
 
 /**
  * Proto.
@@ -666,14 +632,16 @@ var Proto = exports = module.exports = {
   
 }
 
-}); // module: klass/proto.js
-
-require.register("klass/namespace.js", function(module, exports, require){
+});require.register("klass/namespace.js", function(module, exports, require, global){
 /*!
  * Behere
  * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
  * MIT Licensed
  */
+
+
+
+
 
 
 /**
@@ -800,7 +768,5 @@ Namespace.clear = function(){
 
 exports = module.exports = Namespace;
 
-}); // module: klass/namespace.js
-
-window.klass = require("klass");
+});klass = require('klass.js');
 })();
