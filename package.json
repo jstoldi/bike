@@ -9,7 +9,7 @@
   },
   "main": "./lib/klass.js",
   "engines": {
-    "node": "*"
+    "node": ">= 0.5.0"
   },
   "dependencies": {
     "uberproto": "1.x.x",
