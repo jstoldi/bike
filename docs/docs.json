@@ -6,12 +6,12 @@
         {
           "tags": [],
           "description": {
-            "full": "Behere\nCopyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>\nMIT Licensed",
-            "summary": "Behere\nCopyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>\nMIT Licensed",
+            "full": "Behere\r\nCopyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>\r\nMIT Licensed",
+            "summary": "Behere\r\nCopyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>\r\nMIT Licensed",
             "body": ""
           },
           "ignore": true,
-          "code": "// if node\nvar _ = require('underscore')\n  ;\n// end"
+          "code": "// if node\r\nvar _ = require('underscore')\r\n  ;\r\n// end"
         },
         {
           "tags": [
@@ -21,17 +21,17 @@
             }
           ],
           "description": {
-            "full": "Klass.\n",
-            "summary": "Klass.\n",
+            "full": "Klass.\r\n\r",
+            "summary": "Klass.\r\n\r",
             "body": ""
           },
           "isPrivate": true,
           "ignore": false,
-          "code": "var Klass = exports = module.exports = function Klass(){\n  return Klass.attach.apply(Klass, arguments);\n};",
+          "code": "var Klass = exports = module.exports = function Klass(){\r\n  return Klass.attach.apply(Klass, arguments);\r\n};",
           "ctx": {
             "type": "declaration",
             "name": "Klass",
-            "value": "exports = module.exports = function Klass(){",
+            "value": "exports = module.exports = function Klass(){\r",
             "string": "Klass"
           }
         },
@@ -40,7 +40,7 @@
             {
               "type": "type",
               "types": [
-                "String"
+                "String\r"
               ]
             },
             {
@@ -49,18 +49,18 @@
             }
           ],
           "description": {
-            "full": "Library version.\n\nReturns a string in the form of `n.n.n`.\n",
-            "summary": "Library version.",
-            "body": "Returns a string in the form of `n.n.n`.\n"
+            "full": "Library version.\r\n\r\nReturns a string in the form of `n.n.n`.\r\n\r",
+            "summary": "Library version.\r\n\r\nReturns a string in the form of `n.n.n`.\r\n\r",
+            "body": ""
           },
           "isPrivate": false,
           "ignore": false,
-          "code": "Klass.version = '0.4.4';",
+          "code": "Klass.version = '0.4.5';",
           "ctx": {
             "type": "property",
             "receiver": "Klass",
             "name": "version",
-            "value": "'0.4.4'",
+            "value": "'0.4.5'",
             "string": "Klass.version"
           }
         },
@@ -69,7 +69,7 @@
             {
               "type": "type",
               "types": [
-                "String"
+                "String\r"
               ]
             },
             {
@@ -78,9 +78,9 @@
             }
           ],
           "description": {
-            "full": "Delimiter used among namespaces.\n\nDefault `.`.\n",
-            "summary": "Delimiter used among namespaces.",
-            "body": "Default `.`.\n"
+            "full": "Delimiter used among namespaces.\r\n\r\nDefault `.`.\r\n\r",
+            "summary": "Delimiter used among namespaces.\r\n\r\nDefault `.`.\r\n\r",
+            "body": ""
           },
           "isPrivate": false,
           "ignore": false,
@@ -98,14 +98,14 @@
             {
               "type": "return",
               "types": [
-                "Object"
+                "Object\r"
               ],
               "description": ""
             },
             {
               "type": "see",
-              "local": "klass/namespace.js",
-              "visibility": "klass/namespace.js"
+              "local": "klass/namespace.js\r",
+              "visibility": "klass/namespace.js\r"
             },
             {
               "type": "api",
@@ -113,8 +113,8 @@
             }
           ],
           "description": {
-            "full": "Namespace manager reference.\n",
-            "summary": "Namespace manager reference.\n",
+            "full": "Namespace manager reference.\r\n\r",
+            "summary": "Namespace manager reference.\r\n\r",
             "body": ""
           },
           "isPrivate": false,
@@ -133,14 +133,14 @@
             {
               "type": "return",
               "types": [
-                "Object"
+                "Object\r"
               ],
               "description": ""
             },
             {
               "type": "see",
-              "local": "klass/cache.js",
-              "visibility": "klass/cache.js"
+              "local": "klass/cache.js\r",
+              "visibility": "klass/cache.js\r"
             },
             {
               "type": "api",
@@ -148,8 +148,8 @@
             }
           ],
           "description": {
-            "full": "Cache manager reference.\n",
-            "summary": "Cache manager reference.\n",
+            "full": "Cache manager reference.\r\n\r",
+            "summary": "Cache manager reference.\r\n\r",
             "body": ""
           },
           "isPrivate": false,
@@ -168,14 +168,14 @@
             {
               "type": "return",
               "types": [
-                "Object"
+                "Object\r"
               ],
               "description": ""
             },
             {
               "type": "see",
-              "local": "klass/base.js",
-              "visibility": "klass/base.js"
+              "local": "klass/base.js\r",
+              "visibility": "klass/base.js\r"
             },
             {
               "type": "api",
@@ -183,8 +183,8 @@
             }
           ],
           "description": {
-            "full": "Base object interpolation.\n",
-            "summary": "Base object interpolation.\n",
+            "full": "Base object interpolation.\r\n\r",
+            "summary": "Base object interpolation.\r\n\r",
             "body": ""
           },
           "isPrivate": true,
@@ -205,13 +205,13 @@
               "types": [
                 "Object"
               ],
-              "name": "target",
+              "name": "target\r",
               "description": ""
             },
             {
               "type": "return",
               "types": [
-                "Object"
+                "Object\r"
               ],
               "description": ""
             },
@@ -221,13 +221,13 @@
             }
           ],
           "description": {
-            "full": "Attaches methods `define` and `create` on a given object.\n\nReturns the given object.\n",
-            "summary": "Attaches methods `define` and `create` on a given object.",
-            "body": "Returns the given object.\n"
+            "full": "Attaches methods `define` and `create` on a given object.\r\n\r\nReturns the given object.\r\n\r",
+            "summary": "Attaches methods `define` and `create` on a given object.\r\n\r\nReturns the given object.\r\n\r",
+            "body": ""
           },
           "isPrivate": false,
           "ignore": false,
-          "code": "Klass.attach = function(target){\n  if(target){\n    target.define = Klass.define;\n    target.create = Klass.create;\n    target.namespace = Klass.namespace;\n  }\n  \n  return Klass;\n};",
+          "code": "Klass.attach = function(target){\r\n  if(target){\r\n    target.define = Klass.define;\r\n    target.create = Klass.create;\r\n    target.namespace = Klass.namespace;\r\n  }\r\n  \r\n  return Klass;\r\n};",
           "ctx": {
             "type": "method",
             "receiver": "Klass",
@@ -242,7 +242,7 @@
               "types": [
                 "String"
               ],
-              "name": "name",
+              "name": "name\r",
               "description": ""
             },
             {
@@ -250,7 +250,7 @@
               "types": [
                 "Object"
               ],
-              "name": "options",
+              "name": "options\r",
               "description": ""
             },
             {
@@ -258,13 +258,13 @@
               "types": [
                 "[Function]"
               ],
-              "name": "callback",
+              "name": "callback\r",
               "description": ""
             },
             {
               "type": "return",
               "types": [
-                "Object"
+                "Object\r"
               ],
               "description": ""
             },
@@ -274,13 +274,13 @@
             }
           ],
           "description": {
-            "full": "Defines in the `Klass.cache` a new object.\n\nReturns the cached object.\n",
-            "summary": "Defines in the `Klass.cache` a new object.",
-            "body": "Returns the cached object.\n"
+            "full": "Defines in the `Klass.cache` a new object.\r\n\r\nReturns the cached object.\r\n\r",
+            "summary": "Defines in the `Klass.cache` a new object.\r\n\r\nReturns the cached object.\r\n\r",
+            "body": ""
           },
           "isPrivate": false,
           "ignore": false,
-          "code": "Klass.define = function(name, plain, options, callback){\n  var obj = null\n    ;\n  \n  if(!_.isBoolean(plain)){\n    callback = options;\n    options = plain;\n    plain = false;\n  }\n  \n  if(!plain){\n    if(options && options.extend){\n      obj = Klass.cache.get(options.extend);\n      \n      delete options.extend;\n    }else{\n      obj = Klass.base;\n    }\n  \n    if(options && options.mixins){\n      options.mixins.forEach(function(mixin){\n        mixin = Klass.cache.get(mixin);\n        obj = Klass.base.mixin(mixin, obj);\n      });\n      \n      delete options.mixins;\n    }\n    \n    if(options){\n      obj = Klass.base.extend(options, obj);\n    }\n  }else{\n    // plain\n    obj = options;\n  }\n  \n  Klass.cache.set(name, obj);\n  \n  if(callback){\n    callback.apply(obj, [name, options]);\n  }\n  \n  return obj;\n};",
+          "code": "Klass.define = function(name, plain, options, callback){\r\n  var obj = null\r\n    ;\r\n  \r\n  if(!_.isBoolean(plain)){\r\n    callback = options;\r\n    options = plain;\r\n    plain = false;\r\n  }\r\n  \r\n  if(!plain){\r\n    if(options && options.extend){\r\n      obj = Klass.cache.get(options.extend);\r\n      \r\n      delete options.extend;\r\n    }else{\r\n      obj = Klass.base;\r\n    }\r\n    \r\n    if(options){\r\n      obj = Klass.base.extend(options, obj);\r\n    }\r\n  \r\n    if(options && options.mixins){\r\n      options.mixins.forEach(function(mixin){\r\n        mixin = Klass.cache.get(mixin);\r\n        obj = Klass.base.mixin(mixin, obj);\r\n      });\r\n      \r\n      delete options.mixins;\r\n    }\r\n    \r\n  }else{\r\n    // plain\r\n    obj = options;\r\n  }\r\n  \r\n  Klass.cache.set(name, obj);\r\n  \r\n  if(callback){\r\n    callback.apply(obj, [name, options]);\r\n  }\r\n  \r\n  return obj;\r\n};",
           "ctx": {
             "type": "method",
             "receiver": "Klass",
@@ -295,7 +295,7 @@
               "types": [
                 "String"
               ],
-              "name": "name",
+              "name": "name\r",
               "description": ""
             },
             {
@@ -303,7 +303,7 @@
               "types": [
                 "Object"
               ],
-              "name": "options",
+              "name": "options\r",
               "description": ""
             },
             {
@@ -311,13 +311,13 @@
               "types": [
                 "[Function]"
               ],
-              "name": "callback",
+              "name": "callback\r",
               "description": ""
             },
             {
               "type": "return",
               "types": [
-                "Object"
+                "Object\r"
               ],
               "description": ""
             },
@@ -327,13 +327,13 @@
             }
           ],
           "description": {
-            "full": "Creates a new object giving a namespace and options\n\nReturns the object just created.\n",
-            "summary": "Creates a new object giving a namespace and options",
-            "body": "Returns the object just created.\n"
+            "full": "Creates a new object giving a namespace and options\r\n\r\nReturns the object just created.\r\n\r",
+            "summary": "Creates a new object giving a namespace and options\r\n\r\nReturns the object just created.\r\n\r",
+            "body": ""
           },
           "isPrivate": false,
           "ignore": false,
-          "code": "Klass.create = function(name, plain, options, callback){\n  var obj = Klass.cache.get(name)\n    , isSingleton = false\n    ;\n  \n  if(!_.isBoolean(plain)){\n    callback = options;\n    options = plain;\n    plain = false;\n  }\n  \n  if(!plain){\n    if((obj && obj.hasOwnProperty('singleton') && obj.singleton) || (options && options.singleton)){\n      isSingleton = true;\n    }\n    \n    if(options){\n      obj = Klass.base.extend(options, obj);\n    }\n    \n    if(isSingleton){\n      \n      if(_.has(Klass.cache.singletons, name)){\n        obj = Klass.cache.singletons[name];\n      }else{\n        obj = Klass.cache.singletons[name] = Klass.base.create.call(obj, options || {});\n        \n        if(callback){\n          callback.apply(obj, [name, options]);\n        } \n      }\n      \n    }else{\n      obj = Klass.base.create.call(obj, options || {});\n      \n      if(callback){\n        callback.apply(obj, [name, options]);\n      } \n    }\n  }else{\n    // plain\n    obj = new obj();\n  }\n  \n  return obj;\n};",
+          "code": "Klass.create = function(name, plain, options, callback){\r\n  var obj = Klass.cache.get(name)\r\n    , isSingleton = false\r\n    ;\r\n  \r\n  if(!_.isBoolean(plain)){\r\n    callback = options;\r\n    options = plain;\r\n    plain = false;\r\n  }\r\n  \r\n  if(!plain){\r\n    if((obj && obj.hasOwnProperty('singleton') && obj.singleton) || (options && options.singleton)){\r\n      isSingleton = true;\r\n    }\r\n    \r\n    if(options){\r\n      obj = Klass.base.extend(options, obj);\r\n    }\r\n    \r\n    if(isSingleton){\r\n      \r\n      if(_.has(Klass.cache.singletons, name)){\r\n        obj = Klass.cache.singletons[name];\r\n      }else{\r\n        obj = Klass.cache.singletons[name] = Klass.base.create.call(obj, options || {});\r\n        \r\n        if(callback){\r\n          callback.apply(obj, [name, options]);\r\n        } \r\n      }\r\n      \r\n    }else{\r\n      obj = Klass.base.create.call(obj, options || {});\r\n      \r\n      if(callback){\r\n        callback.apply(obj, [name, options]);\r\n      } \r\n    }\r\n  }else{\r\n    // plain\r\n    obj = new obj();\r\n  }\r\n  \r\n  return obj;\r\n};",
           "ctx": {
             "type": "method",
             "receiver": "Klass",
@@ -710,32 +710,32 @@
         {
           "tags": [],
           "description": {
-            "full": "Behere\r\nCopyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>\r\nMIT Licensed",
-            "summary": "Behere\r\nCopyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>\r\nMIT Licensed",
+            "full": "Behere\nCopyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>\nMIT Licensed",
+            "summary": "Behere\nCopyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>\nMIT Licensed",
             "body": ""
           },
           "ignore": true,
-          "code": "// if node\r\nvar _ = require('underscore')\r\n  ;\r\n// end\r\n\r\n// if browser\r\n//if(typeof Object.create !== 'function'){\r\n//"
+          "code": "// if node\nvar _ = require('underscore')\n  ;\n// end\n\n// if browser\n//if(typeof Object.create !== 'function'){\n//"
         },
         {
           "tags": [],
           "description": {
-            "full": "//   * Object.create\r\n//   * \r\n//   * @see https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/create\r\n//",
-            "summary": "//   * Object.create\r\n//   * \r\n//   * @see https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/create\r\n//",
+            "full": "//   * Object.create\n//   * \n//   * @see https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/create\n//",
+            "summary": "//   * Object.create\n//   * \n//   * @see https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/create\n//",
             "body": ""
           },
           "ignore": false,
-          "code": "//  Object.create = function(obj){\r\n//    if(arguments.length > 1){\r\n//      throw new Error('Object.create implementation only accepts the first parameter.');\r\n//    }\r\n//\r\n//    function F() {}\r\n//    F.prototype = obj;\r\n//\r\n//    return new F();\r\n//  };\r\n//};\r\n// end\r\n\r\n// if browser\r\n//if(typeof Object.getPrototypeOf !== 'function'){\r\n//"
+          "code": "//  Object.create = function(obj){\n//    if(arguments.length > 1){\n//      throw new Error('Object.create implementation only accepts the first parameter.');\n//    }\n//\n//    function F() {}\n//    F.prototype = obj;\n//\n//    return new F();\n//  };\n//};\n// end\n\n// if browser\n//if(typeof Object.getPrototypeOf !== 'function'){\n//"
         },
         {
           "tags": [],
           "description": {
-            "full": "//   * Object.getPrototypeOf\r\n//   * \r\n//   * @see http://ejohn.org/blog/objectgetprototypeof/\r\n//",
-            "summary": "//   * Object.getPrototypeOf\r\n//   * \r\n//   * @see http://ejohn.org/blog/objectgetprototypeof/\r\n//",
+            "full": "//   * Object.getPrototypeOf\n//   * \n//   * @see http://ejohn.org/blog/objectgetprototypeof/\n//",
+            "summary": "//   * Object.getPrototypeOf\n//   * \n//   * @see http://ejohn.org/blog/objectgetprototypeof/\n//",
             "body": ""
           },
           "ignore": false,
-          "code": "//  if(typeof 'test'.__proto__ === 'object'){\r\n//    Object.getPrototypeOf = function(object){\r\n//      return object.__proto__;\r\n//    };\r\n//  }else{\r\n//    Object.getPrototypeOf = function(object){\r\n//      return object.constructor.prototype;\r\n//    };\r\n//  }\r\n//};\r\n// end"
+          "code": "//  if(typeof 'test'.__proto__ === 'object'){\n//    Object.getPrototypeOf = function(object){\n//      return object.__proto__;\n//    };\n//  }else{\n//    Object.getPrototypeOf = function(object){\n//      return object.constructor.prototype;\n//    };\n//  }\n//};\n// end"
         },
         {
           "tags": [
@@ -747,8 +747,8 @@
             }
           ],
           "description": {
-            "full": "Proto.\r\nThanks to uberproto\r\n\r",
-            "summary": "Proto.\r\nThanks to uberproto\r\n\r",
+            "full": "Proto.\nThanks to uberproto\n",
+            "summary": "Proto.\nThanks to uberproto\n",
             "body": ""
           },
           "isPrivate": false,
@@ -764,12 +764,12 @@
         {
           "tags": [],
           "description": {
-            "full": "Create a new object using Object.create. The arguments will be\r\npassed to the new instances init method or to a method name set in\r\n__init.",
-            "summary": "Create a new object using Object.create. The arguments will be\r\npassed to the new instances init method or to a method name set in\r\n__init.",
+            "full": "Create a new object using Object.create. The arguments will be\npassed to the new instances init method or to a method name set in\n__init.",
+            "summary": "Create a new object using Object.create. The arguments will be\npassed to the new instances init method or to a method name set in\n__init.",
             "body": ""
           },
           "ignore": false,
-          "code": "create: function(){\r\n    var instance = Object.create(this)\r\n      , init = _.isString(instance.__init) ? instance.__init : 'init'\r\n      ;\r\n      \r\n    if(_.isFunction(instance[init])){\r\n      instance[init].apply(instance, arguments);\r\n    }\r\n    \r\n    return instance;\r\n  },"
+          "code": "create: function(){\n    var instance = Object.create(this)\n      , init = _.isString(instance.__init) ? instance.__init : 'init'\n      ;\n      \n    if(_.isFunction(instance[init])){\n      instance[init].apply(instance, arguments);\n    }\n    \n    return instance;\n  },"
         },
         {
           "tags": [
@@ -779,7 +779,7 @@
                 "prop"
               ],
               "name": "The",
-              "description": "properties to mix in\r"
+              "description": "properties to mix in"
             },
             {
               "type": "param",
@@ -791,13 +791,13 @@
             }
           ],
           "description": {
-            "full": "Mixin a given set of properties\r",
-            "summary": "Mixin a given set of properties\r",
+            "full": "Mixin a given set of properties",
+            "summary": "Mixin a given set of properties",
             "body": ""
           },
           "isPrivate": false,
           "ignore": false,
-          "code": "mixin: function(prop, obj){\r\n    var self = obj || this\r\n      , fnTest = /xyz/.test(function(){xyz;}) ? /\\b_super\\b/ : /.*/\r\n      , _super = Object.getPrototypeOf(self) || self.prototype\r\n      , oldFn\r\n      ;\r\n\r\n    // Copy the properties over\r\n    for(var name in prop){\r\n      // store the old function which would be overwritten\r\n      oldFn = self[name];\r\n      // Check if we're overwriting an existing function\r\n      self[name] = (_.isFunction(prop[name]) && _.isFunction(_super[name]) && fnTest.test(prop[name]))\r\n        || (_.isFunction(oldFn) && _.isFunction(prop[name]))\r\n        ? (function(old, name, fn){return function(){\r\n            \r\n          var tmp = this._super;\r\n\r\n          // Add a new ._super() method that is the same method\r\n          // but either pointing to the prototype method\r\n          // or to the overwritten method\r\n          this._super = (_.isFunction(old)) ? old : _super[name];\r\n\r\n          // The method only need to be bound temporarily, so we\r\n          // remove it when we're done executing\r\n          var ret = fn.apply(this, arguments);\r\n          this._super = tmp;\r\n          \r\n          return ret;\r\n      }})(oldFn, name, prop[name])\r\n      : prop[name];\r\n      \r\n      if((name == self.__init || name == prop.__init) && _.isFunction(self[name])){\r\n        self[name] = _.once(self[name]);\r\n      }\r\n    }\r\n\r\n    return self;\r\n  },"
+          "code": "mixin: function(prop, obj){\n    var self = obj || this\n      , fnTest = /xyz/.test(function(){xyz;}) ? /\\b_super\\b/ : /.*/\n      , _super = Object.getPrototypeOf(self) || self.prototype\n      , oldFn\n      ;\n\n    // Copy the properties over\n    for(var name in prop){\n      // store the old function which would be overwritten\n      oldFn = self[name];\n      // Check if we're overwriting an existing function\n      self[name] = (_.isFunction(prop[name]) && _.isFunction(_super[name]) && fnTest.test(prop[name]))\n        || (_.isFunction(oldFn) && _.isFunction(prop[name]))\n        ? (function(old, name, fn){return function(){\n            \n          var tmp = this._super;\n\n          // Add a new ._super() method that is the same method\n          // but either pointing to the prototype method\n          // or to the overwritten method\n          this._super = (_.isFunction(old)) ? old : _super[name];\n\n          // The method only need to be bound temporarily, so we\n          // remove it when we're done executing\n          var ret = fn.apply(this, arguments);\n          this._super = tmp;\n          \n          return ret;\n      }})(oldFn, name, prop[name])\n      : prop[name];\n      \n      if((name == self.__init || name == prop.__init) && _.isFunction(self[name])){\n         //self[name] = _.once(self[name]);\n        self[name] = self[name];\n      }\n    }\n\n    return self;\n  },"
         },
         {
           "tags": [
@@ -807,7 +807,7 @@
                 "prop"
               ],
               "name": "The",
-              "description": "properties to extend with\r"
+              "description": "properties to extend with"
             },
             {
               "type": "param",
@@ -815,7 +815,7 @@
                 "obj"
               ],
               "name": "[optional]",
-              "description": "The object to extend from\r"
+              "description": "The object to extend from"
             },
             {
               "type": "returns",
@@ -823,13 +823,13 @@
             }
           ],
           "description": {
-            "full": "Extend the current or a given object with the given property\r\nand return the extended object.\r",
-            "summary": "Extend the current or a given object with the given property\r\nand return the extended object.\r",
+            "full": "Extend the current or a given object with the given property\nand return the extended object.",
+            "summary": "Extend the current or a given object with the given property\nand return the extended object.",
             "body": ""
           },
           "isPrivate": false,
           "ignore": false,
-          "code": "extend: function(attrs, obj){\r\n    return this.mixin(attrs, Object.create(obj || this));\r\n  },"
+          "code": "extend: function(attrs, obj){\n    return this.mixin(attrs, Object.create(obj || this));\n  },"
         },
         {
           "tags": [
@@ -839,7 +839,7 @@
                 "name"
               ],
               "name": "Name",
-              "description": "of the method to prox\r"
+              "description": "of the method to prox"
             },
             {
               "type": "param",
@@ -851,13 +851,13 @@
             }
           ],
           "description": {
-            "full": "Return a callback function with this set to the current or a given context object.\r",
-            "summary": "Return a callback function with this set to the current or a given context object.\r",
+            "full": "Return a callback function with this set to the current or a given context object.",
+            "summary": "Return a callback function with this set to the current or a given context object.",
             "body": ""
           },
           "isPrivate": false,
           "ignore": false,
-          "code": "proxy: function(name, obj){\r\n    var self = obj || this\r\n      ;\r\n    \r\n    return function(){\r\n      return self[name].apply(self, arguments);\r\n    }\r\n  }\r\n  \r\n}"
+          "code": "proxy: function(name, obj){\n    var self = obj || this\n      ;\n    \n    return function(){\n      return self[name].apply(self, arguments);\n    }\n  }\n  \n}"
         }
       ]
     },

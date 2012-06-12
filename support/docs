@@ -1,13 +1,9 @@
 #!/usr/bin/env node
 
 /*!
- * Behere - Klass
+ * Behere
  * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
  * MIT Licensed
- */
-
-/*!
- * Module dependencies.
  */
 
 var dox = require('dox')

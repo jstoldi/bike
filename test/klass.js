@@ -7,6 +7,18 @@ var Klass = require('../')
 describe('Klass', function(){
   
   /*
+   * #version
+   */
+
+  describe('#version', function(){
+		
+    it('should have a valid format', function(){
+      /^\d+\.\d+\.\d+$/.test(Klass.version).should.be.ok
+    })
+      
+  })
+  
+  /*
    * #attach()
    */
 

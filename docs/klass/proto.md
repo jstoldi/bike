@@ -1,5 +1,5 @@
 
 # Proto
 
-  Proto.  
+  Proto.
   Thanks to uberproto
