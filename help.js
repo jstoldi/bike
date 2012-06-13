@@ -47,7 +47,7 @@ require.relative = function (parent) {
   };
 
 
-require.register("klass.js", function(module, exports, require){
+require.register("help.js", function(module, exports, require){
 /*!
  * Behere
  * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
@@ -56,13 +56,13 @@ require.register("klass.js", function(module, exports, require){
 
 
 /**
- * Klass.
+ * Help.
  * 
  * @api private
  */
 
-var Klass = exports = module.exports = function Klass(){
-  return Klass.attach.apply(Klass, arguments);
+var Help = exports = module.exports = function Help(){
+  return Help.attach.apply(Help, arguments);
 };
 
 /**
@@ -74,7 +74,7 @@ var Klass = exports = module.exports = function Klass(){
  * @api public
  */
 
-Klass.version = '0.4.5';
+Help.version = '0.4.5';
   
 /**
  * Delimiter used among namespaces.
@@ -85,37 +85,37 @@ Klass.version = '0.4.5';
  * @api public
  */
 
-Klass.delimiter = '.';
+Help.delimiter = '.';
 
 /**
  * Namespace manager reference.
  *
  * @return {Object}
- * @see klass/namespace.js
+ * @see help/namespace.js
  * @api public
  */
 
-Klass.namespace = require('./klass/namespace');
+Help.namespace = require('./help/namespace');
 
 /**
  * Cache manager reference.
  *
  * @return {Object}
- * @see klass/cache.js
+ * @see help/cache.js
  * @api public
  */
 
-Klass.cache = require('./klass/cache');
+Help.cache = require('./help/cache');
 
 /**
  * Base object interpolation.
  * 
  * @return {Object}
- * @see klass/base.js
+ * @see help/base.js
  * @api private
  */
 
-Klass.base = require('./klass/base');;
+Help.base = require('./help/base');;
 
 /**
  * Attaches methods `define` and `create` on a given object.
@@ -127,18 +127,18 @@ Klass.base = require('./klass/base');;
  * @api public
  */
 
-Klass.attach = function(target){
+Help.attach = function(target){
   if(target){
-    target.define = Klass.define;
-    target.create = Klass.create;
-    target.namespace = Klass.namespace;
+    target.define = Help.define;
+    target.create = Help.create;
+    target.namespace = Help.namespace;
   }
   
-  return Klass;
+  return Help;
 };
 
 /**
- * Defines in the `Klass.cache` a new object.
+ * Defines in the `Help.cache` a new object.
  *
  * Returns the cached object.
  * 
@@ -149,7 +149,7 @@ Klass.attach = function(target){
  * @api public
  */
 
-Klass.define = function(name, plain, options, callback){
+Help.define = function(name, plain, options, callback){
   var obj = null
     ;
   
@@ -161,21 +161,21 @@ Klass.define = function(name, plain, options, callback){
   
   if(!plain){
     if(options && options.extend){
-      obj = Klass.cache.get(options.extend);
+      obj = Help.cache.get(options.extend);
       
       delete options.extend;
     }else{
-      obj = Klass.base;
+      obj = Help.base;
     }
     
     if(options){
-      obj = Klass.base.extend(options, obj);
+      obj = Help.base.extend(options, obj);
     }
   
     if(options && options.mixins){
       options.mixins.forEach(function(mixin){
-        mixin = Klass.cache.get(mixin);
-        obj = Klass.base.mixin(mixin, obj);
+        mixin = Help.cache.get(mixin);
+        obj = Help.base.mixin(mixin, obj);
       });
       
       delete options.mixins;
@@ -186,7 +186,7 @@ Klass.define = function(name, plain, options, callback){
     obj = options;
   }
   
-  Klass.cache.set(name, obj);
+  Help.cache.set(name, obj);
   
   if(callback){
     callback.apply(obj, [name, options]);
@@ -207,8 +207,8 @@ Klass.define = function(name, plain, options, callback){
  * @api public
  */
 
-Klass.create = function(name, plain, options, callback){
-  var obj = Klass.cache.get(name)
+Help.create = function(name, plain, options, callback){
+  var obj = Help.cache.get(name)
     , isSingleton = false
     ;
   
@@ -224,15 +224,15 @@ Klass.create = function(name, plain, options, callback){
     }
     
     if(options){
-      obj = Klass.base.extend(options, obj);
+      obj = Help.base.extend(options, obj);
     }
     
     if(isSingleton){
       
-      if(_.has(Klass.cache.singletons, name)){
-        obj = Klass.cache.singletons[name];
+      if(_.has(Help.cache.singletons, name)){
+        obj = Help.cache.singletons[name];
       }else{
-        obj = Klass.cache.singletons[name] = Klass.base.create.call(obj, options || {});
+        obj = Help.cache.singletons[name] = Help.base.create.call(obj, options || {});
         
         if(callback){
           callback.apply(obj, [name, options]);
@@ -240,7 +240,7 @@ Klass.create = function(name, plain, options, callback){
       }
       
     }else{
-      obj = Klass.base.create.call(obj, options || {});
+      obj = Help.base.create.call(obj, options || {});
       
       if(callback){
         callback.apply(obj, [name, options]);
@@ -253,16 +253,16 @@ Klass.create = function(name, plain, options, callback){
   
   return obj;
 };
-}); // module: klass.js
+}); // module: help.js
 
-require.register("klass/cache.js", function(module, exports, require){
+require.register("help/cache.js", function(module, exports, require){
 /*!
  * Behere
  * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
  * MIT Licensed
  */
 
-var klass = require('../klass')
+var help = require('../help')
   , namespace = require('./namespace')
   ;
 
@@ -271,15 +271,15 @@ var klass = require('../klass')
  * 
  * Examples:
  * 
- *    Klass.cache()
+ *    Help.cache()
  *    // get all
  *    // => {Object}
  * 
- *    Klass.cache('foo.myclass')
+ *    Help.cache('foo.myclass')
  *    // get
  *    // => {*}
  * 
- *    Klass.cache('foo.myclass', *)
+ *    Help.cache('foo.myclass', *)
  *    // set
  *    // => {*}
  *
@@ -331,7 +331,7 @@ Cache.get = function(name){
   
   var parent = Cache.items
     , seed = null
-    , seeds = name.split(klass.delimiter)
+    , seeds = name.split(help.delimiter)
     , name = _.last(seeds)
     ;
 
@@ -349,7 +349,7 @@ Cache.get = function(name){
     Cache.require( seeds, 1 );
   }
   
-  return parent[name] ? parent[name].$klass : null;
+  return parent[name] ? parent[name].$help : null;
 };
 
 /**
@@ -367,7 +367,7 @@ Cache.set = function(name, value){
 
   var parent = Cache.items
     , seed = null
-    , seeds = name.split(klass.delimiter)
+    , seeds = name.split(help.delimiter)
     , name = _.last(seeds)
     ;
 
@@ -382,15 +382,15 @@ Cache.set = function(name, value){
 
   if(parent[name]){
     parent[name].$name = name;
-    parent[name].$klass = value;
+    parent[name].$help = value;
   }else{
     parent[name] = {
       $name: name,
-      $klass: value
+      $help: value
     };
   }
   
-  return parent[name].$klass;
+  return parent[name].$help;
 };
 
 /**
@@ -439,9 +439,9 @@ Cache.require = function(name, status){
   
   if(_.isArray(name)){
     seeds = name;
-    name = name.join(klass.delimiter);  
+    name = name.join(help.delimiter);  
   }else{
-    seeds = name.split(klass.delimiter);
+    seeds = name.split(help.delimiter);
   }
   
   link = namespace.get(name);
@@ -454,7 +454,7 @@ Cache.require = function(name, status){
   
   try{
     // Look for behere/lib/behere/*.js    
-    req = require(link.target + '/' + _.last(seeds, (seeds.length - link.name.split(klass.delimiter).length)).join('/'));
+    req = require(link.target + '/' + _.last(seeds, (seeds.length - link.name.split(help.delimiter).length)).join('/'));
     
   }catch(e){
      
@@ -496,9 +496,9 @@ Cache.require = function(name, status){
 
 exports = module.exports = Cache;
  
-}); // module: klass/cache.js
+}); // module: help/cache.js
 
-require.register("klass/base.js", function(module, exports, require){
+require.register("help/base.js", function(module, exports, require){
 /*!
  * Behere
  * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
@@ -518,9 +518,9 @@ var Base = exports = module.exports = Proto.extend({
   
 });
  
-}); // module: klass/base.js
+}); // module: help/base.js
 
-require.register("klass/proto.js", function(module, exports, require){
+require.register("help/proto.js", function(module, exports, require){
 /*!
  * Behere
  * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
@@ -666,9 +666,9 @@ var Proto = exports = module.exports = {
   
 }
 
-}); // module: klass/proto.js
+}); // module: help/proto.js
 
-require.register("klass/namespace.js", function(module, exports, require){
+require.register("help/namespace.js", function(module, exports, require){
 /*!
  * Behere
  * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
@@ -681,15 +681,15 @@ require.register("klass/namespace.js", function(module, exports, require){
  * 
  * Examples:
  * 
- *    Klass.namespace()
+ *    Help.namespace()
  *    // get all
  *    // => []
  * 
- *    Klass.namespace('foo')
+ *    Help.namespace('foo')
  *    // get
  *    // => String
  * 
- *    Klass.namespace('foo', './my/path/to/it')
+ *    Help.namespace('foo', './my/path/to/it')
  *    // set
  *    // => String
  *
@@ -800,7 +800,7 @@ Namespace.clear = function(){
 
 exports = module.exports = Namespace;
 
-}); // module: klass/namespace.js
+}); // module: help/namespace.js
 
-window.klass = require("klass");
+window.help = require("help");
 })();
