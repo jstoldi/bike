@@ -1,6 +1,6 @@
 # History
 
-0.5.0 / (roadmap)
+0.6.0 / (roadmap)
 ------------------
 
   * Add more tests
@@ -12,7 +12,12 @@
   * Change browser build version with https://github.com/LearnBoost/browserbuild
   * Make `version` variable replace with * directly in MakeFile
 
-0.4.5 / (in progress)
+0.5.0 / 2012-06-13
+------------------
+
+  * Renamed from `behere-klass` to `help`
+
+0.4.6 / 2012-06-12
 ------------------
 
   * Added tests (24)
