@@ -1,19 +1,19 @@
 > ![Stage](https://github.com/behere/behere.github.com/raw/master/assets/stage/production.png)  
-[![Build Status](https://secure.travis-ci.org/behere/behere-klass.png)](http://travis-ci.org/behere/behere-klass)
+[![Build Status](https://secure.travis-ci.org/behere/help.png)](http://travis-ci.org/behere/help)
 
-> version 0.4.5 (stable) - [History](https://github.com/behere/behere-klass/blob/master/HISTORY.md)
+> version 0.4.5 (stable) - [History](https://github.com/behere/help/blob/master/HISTORY.md)
 
-# Klass
+# Help
   
   Organize your classes through namespaces, extend or mix them.
   
-  This module can be used `standalone` or inside [behere framework](http://github.com/behere/behere) as `behere.klass`.
+  This module can be used `standalone` or inside [behere framework](http://github.com/behere/behere) as `behere.help`.
 
 ## Installation
 
 Install this using `npm` as follows for standalone use
 
-    $ npm install behere-klass
+    $ npm install help
 
 ## Quick Start
 
@@ -22,15 +22,15 @@ Install this using `npm` as follows for standalone use
 This will *register* a class.
 
 ```javascript
-var Klass = require('behere-klass');
+var Help = require('help');
 
-Klass.define('animal', {
+Help.define('animal', {
   move: function(){
     return 'i move'
   }
 });
 
-Klass.create('animal').move();
+Help.create('animal').move();
 // => 'i move'
 ```
 
@@ -39,7 +39,7 @@ behere use: `behere.define()`
 ### Create a class
 
 ```javascript
-var animal = Klass.create('animal');
+var animal = Help.create('animal');
 
 animal.move();
 // => 'i move'
@@ -53,14 +53,14 @@ Extending a class will allow to inherit all the properties and methods from the 
 To call the parent method use the `this._super()` syntax.
 
 ```javascript
-Klass.define('cat', {
+Help.define('cat', {
   extend: 'animal',
   move: function(){
     return this._super() + ', run and jump'
   }
 });
 
-var cat = Klass.create('cat');
+var cat = Help.create('cat');
 
 cat.move();
 // => 'i move, run and jump'
@@ -71,28 +71,28 @@ cat.move();
 The namespace will help you organize classes in a tree structure.
 
 ```javascript
-Klass.define('animal', {
+Help.define('animal', {
   /* ... */
 });
 
-Klass.define('animal.cat', {
+Help.define('animal.cat', {
   extend: 'animal'
   /* ... */
 });
 
-Klass.define('animal.cat.Sophie', {
+Help.define('animal.cat.Sophie', {
   extend: 'animal.cat'
   /* ... */
 });
 
 // And more..
 
-Klass.define('animal.dog', {
+Help.define('animal.dog', {
   extend: 'animal'
   /* ... */
 });
 
-Klass.define('Monkey', {  // Monkey is the name of my dog :-)
+Help.define('Monkey', {  // Monkey is the name of my dog :-)
   extend: 'animal.dog'
   /* ... */
 });
@@ -101,19 +101,19 @@ Klass.define('Monkey', {  // Monkey is the name of my dog :-)
 ### Load missing libraries
 
 In most of the cases your code will need to `require` libraries.
-With *Klass* what you need to do it so define namespaces and its system location.
+With *Help* what you need to do it so define namespaces and its system location.
 
 ```javascript
-Klass.namespace('foo', '/my/path/to/it');
+Help.namespace('foo', '/my/path/to/it');
 
-Klass.create('foo.animal');
+Help.create('foo.animal');
 // => this will create a class defined in '/my/path/to/it/animal.js'
 ```
 
 Works the same extending or mixing:
 
 ```javascript
-Klass.define('Sophie', {
+Help.define('Sophie', {
   extend: 'foo.animal.cat'
 });
 // => This will extend the class defined in '/my/path/to/it/animal/cat.js'
@@ -140,4 +140,4 @@ Gabriele Di Stefano <gabriele.ds@gmail.com>
 
 ## License 
 
-[The MIT License](https://github.com/behere/behere-klass/blob/master/LICENSE)
+[The MIT License](https://github.com/behere/help/blob/master/LICENSE)
