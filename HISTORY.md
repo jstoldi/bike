@@ -12,10 +12,10 @@
   * Change browser build version with https://github.com/LearnBoost/browserbuild
   * Make `version` variable replace with * directly in MakeFile
 
-0.5.0 / 2012-06-13
+0.5.1 / 2012-06-14
 ------------------
 
-  * Renamed from `behere-klass` to `help`
+  * Renamed from `behere-klass` to `bike`
 
 0.4.6 / 2012-06-12
 ------------------
