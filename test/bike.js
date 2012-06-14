@@ -1,10 +1,10 @@
-var Klass = require('../')
+var Bike = require('../')
   , assert = require('assert')
   , path = require('path')
   ;
 
 
-describe('Klass', function(){
+describe('Bike', function(){
   
   /*
    * #version
@@ -13,7 +13,7 @@ describe('Klass', function(){
   describe('#version', function(){
 		
     it('should have a valid format', function(){
-      /^\d+\.\d+\.\d+$/.test(Klass.version).should.be.ok
+      /^\d+\.\d+\.\d+$/.test(Bike.version).should.be.ok
     })
       
   })
@@ -28,13 +28,13 @@ describe('Klass', function(){
       , obj = new fn();
         
     it('should add to an object both functions define and create', function(){
-      Klass.attach(obj);
+      Bike.attach(obj);
       obj.define.should.be.an.instanceof(Function);
       obj.create.should.be.an.instanceof(Function);
     })
     
     it('should return the given object', function(){
-     Klass.attach(obj).create.should.be.an.instanceof(Function);
+     Bike.attach(obj).create.should.be.an.instanceof(Function);
     })
       
   })
@@ -46,55 +46,55 @@ describe('Klass', function(){
   describe('#define(), #create()', function(){    
       
     it('should define a klass in the cache', function(){
-      Klass.define('kls_1', {
+      Bike.define('kls_1', {
         ciao: function(){
           return 'hello'
         }
       });
       
-      Klass.create('kls_1').ciao().should.equal('hello')
+      Bike.create('kls_1').ciao().should.equal('hello')
     })
     
     it('should extend a klass from the cache', function(){
-      Klass.define('kls_2', {
+      Bike.define('kls_2', {
         extend: 'kls_1',
         ciao: function(){
           return this._super.apply(this, arguments) + ' ciao'
         }
       });
       
-      Klass.create('kls_2').ciao().should.equal('hello ciao')
+      Bike.create('kls_2').ciao().should.equal('hello ciao')
     })
     
     it('should define a class inside an existing namespace', function(){
-      Klass.define('kls_2.kls_3', {
+      Bike.define('kls_2.kls_3', {
         extend: 'kls_2',
         ciao: function(){
           return this._super.apply(this, arguments) + ' hola'
         }
       });
       
-      Klass.create('kls_2.kls_3').ciao().should.equal('hello ciao hola')
+      Bike.create('kls_2.kls_3').ciao().should.equal('hello ciao hola')
     })
     
     it('should try to require object if not already defined', function(){
-      Klass.namespace('test', path.join(__dirname, 'klasses'))
-      Klass.create('test.cat').name().should.equal('animal cat')
+      Bike.namespace('test', path.join(__dirname, 'klasses'))
+      Bike.create('test.cat').name().should.equal('animal cat')
     })
     
     it('should mix objects', function(){
-      Klass.namespace('test', path.join(__dirname, 'klasses'))
-      Klass.create('test.sophie').name().should.equal('Ciao, sono Sophie ! animal cat, very playfull!!')
+      Bike.namespace('test', path.join(__dirname, 'klasses'))
+      Bike.create('test.sophie').name().should.equal('Ciao, sono Sophie ! animal cat, very playfull!!')
     })
     
     it('should initialize just once the class', function(){
-      Klass.define('count', {
+      Bike.define('count', {
         singleton: true,
         count: '1'
       });
       
-      var a = Klass.create('count');
-      var b = Klass.create('count');
+      var a = Bike.create('count');
+      var b = Bike.create('count');
       
       a.count.should.equal('1');
       b.count.should.equal('1');
@@ -106,7 +106,7 @@ describe('Klass', function(){
     })
     
     it('should work with a custom constructor name', function(){
-      Klass.define('aaa', {
+      Bike.define('aaa', {
         __init: 'initialize',
         name: 'Angelo',
         speak: function(){
@@ -114,14 +114,14 @@ describe('Klass', function(){
         }
       });
       
-      Klass.define('bbb', {
+      Bike.define('bbb', {
         extend: 'aaa',
         speak: function(){
           return this._super.apply(this, arguments);
         }
       });
       
-      var bbb = Klass.create('bbb',{
+      var bbb = Bike.create('bbb',{
         initialize: function(){
           this.name = 'Gabriele'
         }
@@ -130,11 +130,11 @@ describe('Klass', function(){
       bbb.speak().should.equal('Gabriele')
     })
     
-    it('should extend from Klass.base and have initialize as init method', function(){
+    it('should extend from Bike.base and have initialize as init method', function(){
       /*
-      Klass.define('ccc', Klass.base);
+      Bike.define('ccc', Bike.base);
       
-      Klass.define('ddd', {
+      Bike.define('ddd', {
         extend: 'ccc',
         name: 'Gabriele',
         initialize: function(){
@@ -142,7 +142,7 @@ describe('Klass', function(){
         }
       });
       
-      var ddd = Klass.create('ddd');
+      var ddd = Bike.create('ddd');
       
       ddd.name.should.equal('Gabriele!!!')
       */

@@ -1,9 +1,9 @@
-var Klass = require('../')
+var Bike = require('../')
   , assert = require('assert')
   ;
 
 
-describe('Klass', function(){
+describe('Bike', function(){
   
   /*
    * #namespace()
@@ -12,26 +12,26 @@ describe('Klass', function(){
   describe('#namespace()', function(){  
     
     it('should return an array', function(){    
-      Klass.namespace().should.be.an.instanceof(Array);
+      Bike.namespace().should.be.an.instanceof(Array);
     })
     
     it('should set namespaces with name and target properties', function(){
-      var ns = Klass.namespace('foo', '-/foo/-');
+      var ns = Bike.namespace('foo', '-/foo/-');
       ns.should.be.a('object');
       ns.should.have.property('name', 'foo');
       ns.should.have.property('target', '-/foo/-');
     })
     
     it('should override the target if the name already exist', function(){
-      var ns = Klass.namespace('foo', 'foo---');
+      var ns = Bike.namespace('foo', 'foo---');
       ns.should.be.a('object');
       ns.should.have.property('name', 'foo');
       ns.should.have.property('target', 'foo---');
     })
     
     it('should return the target related to the given name', function(){
-      var ns = Klass.namespace('sophie', 'cat');
-      Klass.namespace('sophie').should.equal('cat');
+      var ns = Bike.namespace('sophie', 'cat');
+      Bike.namespace('sophie').should.equal('cat');
     })
     
     /*
@@ -41,11 +41,11 @@ describe('Klass', function(){
     describe('#clear()', function(){
   
       it('should clear namespace and return an array', function(){
-        Klass.namespace.clear();
-        Klass.namespace('foo', '-/foo/-');
-        Klass.namespace().should.be.an.instanceof(Array).with.lengthOf(1);
-        Klass.namespace.clear().should.be.an.instanceof(Array).with.lengthOf(0);
-        Klass.namespace().should.be.an.instanceof(Array).with.lengthOf(0);
+        Bike.namespace.clear();
+        Bike.namespace('foo', '-/foo/-');
+        Bike.namespace().should.be.an.instanceof(Array).with.lengthOf(1);
+        Bike.namespace.clear().should.be.an.instanceof(Array).with.lengthOf(0);
+        Bike.namespace().should.be.an.instanceof(Array).with.lengthOf(0);
       })
   
     })
@@ -57,18 +57,18 @@ describe('Klass', function(){
     describe('#remove()', function(){
       
       it('should return the items', function(){
-        Klass.namespace.remove().should.be.an.instanceof(Array);
+        Bike.namespace.remove().should.be.an.instanceof(Array);
       })
       
       it('should remove a give item and return items', function(){
-        Klass.namespace.clear();
+        Bike.namespace.clear();
         
-        Klass.namespace.set('meme','cat white');
-        Klass.namespace.set('sophie','cat orange');
+        Bike.namespace.set('meme','cat white');
+        Bike.namespace.set('sophie','cat orange');
         
-        Klass.namespace().should.be.an.instanceof(Array).with.lengthOf(2);
-        Klass.namespace.remove('sophie').should.be.an.instanceof(Array);
-        Klass.namespace().should.be.an.instanceof(Array).with.lengthOf(1);
+        Bike.namespace().should.be.an.instanceof(Array).with.lengthOf(2);
+        Bike.namespace.remove('sophie').should.be.an.instanceof(Array);
+        Bike.namespace().should.be.an.instanceof(Array).with.lengthOf(1);
       })
   
     })

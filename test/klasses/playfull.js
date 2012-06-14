@@ -1,7 +1,7 @@
-var Klass = require('../../')
+var Bike = require('../../')
   ;
 
-Klass.define('test.playfull', {
+Bike.define('test.playfull', {
   name: function(){
     return this._super.apply(this, arguments) + ', very playfull!!';
   }

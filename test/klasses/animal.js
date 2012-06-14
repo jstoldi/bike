@@ -1,7 +1,7 @@
-var Klass = require('../../')
+var Bike = require('../../')
   ;
   
-Klass.define('test.animal', {
+Bike.define('test.animal', {
   name: function(){
     return 'animal'
   }

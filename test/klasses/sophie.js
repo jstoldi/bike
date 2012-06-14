@@ -1,7 +1,7 @@
-var Klass = require('../../')
+var Bike = require('../../')
   ;
 
-Klass.define('test.sophie', {
+Bike.define('test.sophie', {
   extend: 'test.cat',
   mixins: [
     'test.playfull'
