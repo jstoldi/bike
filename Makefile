@@ -29,7 +29,7 @@ test:
 		--reporter $(REPORTER)
 
 docs:
-	@mkdir -p docs/help
+	@mkdir -p docs/bike
 	@node ./support/docs
 
 copy-to-repo:

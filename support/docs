@@ -37,7 +37,7 @@ wrench.readdirSyncRecursive(source).forEach(function(file){
 
 // json
 var json = JSON.stringify({data: ret}, null, 2);
-fs.writeFileSync(path.join(output, 'docs.json'), json, 'utf-8');
+fs.writeFileSync(path.join(output, 'bike.json'), json, 'utf-8');
 
 ret.forEach(function(file){
   // markdown

@@ -1,6 +1,6 @@
-(function(){var global = this;function debug(){return debug};function require(p, parent){ var path = require.resolve(p) , mod = require.modules[path]; if (!mod) throw new Error('failed to require "' + p + '" from ' + parent); if (!mod.exports) { mod.exports = {}; mod.call(mod.exports, mod, mod.exports, require.relative(path), global); } return mod.exports;}require.modules = {};require.resolve = function(path){ var orig = path , reg = path + '.js' , index = path + '/index.js'; return require.modules[reg] && reg || require.modules[index] && index || orig;};require.register = function(path, fn){ require.modules[path] = fn;};require.relative = function(parent) { return function(p){ if ('debug' == p) return debug; if ('.' != p.charAt(0)) return require(p); var path = parent.split('/') , segs = p.split('/'); path.pop(); for (var i = 0; i < segs.length; i++) { var seg = segs[i]; if ('..' == seg) path.pop(); else if ('.' != seg) path.push(seg); } return require(path.join('/'), parent); };};require.register("help.js", function(module, exports, require, global){
+(function(){var global = this;function debug(){return debug};function require(p, parent){ var path = require.resolve(p) , mod = require.modules[path]; if (!mod) throw new Error('failed to require "' + p + '" from ' + parent); if (!mod.exports) { mod.exports = {}; mod.call(mod.exports, mod, mod.exports, require.relative(path), global); } return mod.exports;}require.modules = {};require.resolve = function(path){ var orig = path , reg = path + '.js' , index = path + '/index.js'; return require.modules[reg] && reg || require.modules[index] && index || orig;};require.register = function(path, fn){ require.modules[path] = fn;};require.relative = function(parent) { return function(p){ if ('debug' == p) return debug; if ('.' != p.charAt(0)) return require(p); var path = parent.split('/') , segs = p.split('/'); path.pop(); for (var i = 0; i < segs.length; i++) { var seg = segs[i]; if ('..' == seg) path.pop(); else if ('.' != seg) path.push(seg); } return require(path.join('/'), parent); };};require.register("bike.js", function(module, exports, require, global){
 /*!
- * Behere
+ * Bike
  * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
  * MIT Licensed
  */
@@ -11,13 +11,13 @@
 
 
 /**
- * Help.
+ * Bike.
  * 
  * @api private
  */
 
-var Help = exports = module.exports = function Help(){
-  return Help.attach.apply(Help, arguments);
+var Bike = exports = module.exports = function Bike(){
+  return Bike.attach.apply(Bike, arguments);
 };
 
 /**
@@ -29,7 +29,7 @@ var Help = exports = module.exports = function Help(){
  * @api public
  */
 
-Help.version = '0.4.5';
+Bike.version = '0.5.1';
   
 /**
  * Delimiter used among namespaces.
@@ -40,37 +40,37 @@ Help.version = '0.4.5';
  * @api public
  */
 
-Help.delimiter = '.';
+Bike.delimiter = '.';
 
 /**
  * Namespace manager reference.
  *
  * @return {Object}
- * @see help/namespace.js
+ * @see bike/namespace.js
  * @api public
  */
 
-Help.namespace = require('./help/namespace');
+Bike.namespace = require('./bike/namespace');
 
 /**
  * Cache manager reference.
  *
  * @return {Object}
- * @see help/cache.js
+ * @see bike/cache.js
  * @api public
  */
 
-Help.cache = require('./help/cache');
+Bike.cache = require('./bike/cache');
 
 /**
  * Base object interpolation.
  * 
  * @return {Object}
- * @see help/base.js
+ * @see bike/base.js
  * @api private
  */
 
-Help.base = require('./help/base');;
+Bike.base = require('./bike/base');;
 
 /**
  * Attaches methods `define` and `create` on a given object.
@@ -82,18 +82,18 @@ Help.base = require('./help/base');;
  * @api public
  */
 
-Help.attach = function(target){
+Bike.attach = function(target){
   if(target){
-    target.define = Help.define;
-    target.create = Help.create;
-    target.namespace = Help.namespace;
+    target.define = Bike.define;
+    target.create = Bike.create;
+    target.namespace = Bike.namespace;
   }
   
-  return Help;
+  return Bike;
 };
 
 /**
- * Defines in the `Help.cache` a new object.
+ * Defines in the `Bike.cache` a new object.
  *
  * Returns the cached object.
  * 
@@ -104,7 +104,7 @@ Help.attach = function(target){
  * @api public
  */
 
-Help.define = function(name, plain, options, callback){
+Bike.define = function(name, plain, options, callback){
   var obj = null
     ;
   
@@ -116,21 +116,21 @@ Help.define = function(name, plain, options, callback){
   
   if(!plain){
     if(options && options.extend){
-      obj = Help.cache.get(options.extend);
+      obj = Bike.cache.get(options.extend);
       
       delete options.extend;
     }else{
-      obj = Help.base;
+      obj = Bike.base;
     }
     
     if(options){
-      obj = Help.base.extend(options, obj);
+      obj = Bike.base.extend(options, obj);
     }
   
     if(options && options.mixins){
       options.mixins.forEach(function(mixin){
-        mixin = Help.cache.get(mixin);
-        obj = Help.base.mixin(mixin, obj);
+        mixin = Bike.cache.get(mixin);
+        obj = Bike.base.mixin(mixin, obj);
       });
       
       delete options.mixins;
@@ -141,7 +141,7 @@ Help.define = function(name, plain, options, callback){
     obj = options;
   }
   
-  Help.cache.set(name, obj);
+  Bike.cache.set(name, obj);
   
   if(callback){
     callback.apply(obj, [name, options]);
@@ -162,8 +162,8 @@ Help.define = function(name, plain, options, callback){
  * @api public
  */
 
-Help.create = function(name, plain, options, callback){
-  var obj = Help.cache.get(name)
+Bike.create = function(name, plain, options, callback){
+  var obj = Bike.cache.get(name)
     , isSingleton = false
     ;
   
@@ -179,15 +179,15 @@ Help.create = function(name, plain, options, callback){
     }
     
     if(options){
-      obj = Help.base.extend(options, obj);
+      obj = Bike.base.extend(options, obj);
     }
     
     if(isSingleton){
       
-      if(_.has(Help.cache.singletons, name)){
-        obj = Help.cache.singletons[name];
+      if(_.has(Bike.cache.singletons, name)){
+        obj = Bike.cache.singletons[name];
       }else{
-        obj = Help.cache.singletons[name] = Help.base.create.call(obj, options || {});
+        obj = Bike.cache.singletons[name] = Bike.base.create.call(obj, options || {});
         
         if(callback){
           callback.apply(obj, [name, options]);
@@ -195,7 +195,7 @@ Help.create = function(name, plain, options, callback){
       }
       
     }else{
-      obj = Help.base.create.call(obj, options || {});
+      obj = Bike.base.create.call(obj, options || {});
       
       if(callback){
         callback.apply(obj, [name, options]);
@@ -208,279 +208,9 @@ Help.create = function(name, plain, options, callback){
   
   return obj;
 };
-});require.register("help/cache.js", function(module, exports, require, global){
+});require.register("bike/proto.js", function(module, exports, require, global){
 /*!
- * Behere
- * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
- * MIT Licensed
- */
-
-var help = require('../help')
-  , namespace = require('./namespace')
-
-
-
-
-  ;
-
-/**
- * Manager and placeholder of the cache object.
- * 
- * Examples:
- * 
- *    Help.cache()
- *    // get all
- *    // => {Object}
- * 
- *    Help.cache('foo.myclass')
- *    // get
- *    // => {*}
- * 
- *    Help.cache('foo.myclass', *)
- *    // set
- *    // => {*}
- *
- * @param {[String]} name
- * @param {[*]} value
- * @return {Object|*}
- * @api public
- */
-
-var Cache = function Cache(name, value){
-  if(!value && name){
-    value = Cache.get(name);
-    return value;
-  }else if(value && name){
-    return Cache.set.apply(this, arguments);
-  }
-  
-  return Cache.items;
-};
-
-/**
- * Singletons container.
- *
- * @type {Object}
- * @api private
- */
-
-Cache.singletons = {};
-
-/**
- * Cache container.
- *
- * @type {Object}
- * @api private
- */
-
-
-
-
-// if browser
-//Cache.items = window;
-// end
-  
-/**
- * Get an element from the cache container.
- *
- * @param {String} name
- * @return {*|null}
- * @api public
- */
-
-Cache.get = function(name){
-  if(!_.isString(name)) return name;
-  
-  var parent = Cache.items
-    , seed = null
-    , seeds = name.split(help.delimiter)
-    , name = _.last(seeds)
-    ;
-
-  for(var i = 0; i < seeds.length-1; i++){
-    seed = seeds[i];
-    
-    if(!parent[seed]){
-      Cache.require( seeds, 0 );
-    };
-
-    parent = parent[seed];
-  };
-  
-  if(!parent[name]) {
-    Cache.require( seeds, 1 );
-  }
-  
-  return parent[name] ? parent[name].$help : null;
-};
-
-/**
- * Add or replace a element in the cache container.
- *
- * Returns the give element;
- * 
- * @param {String} name
- * @param {*} value
- * @return {*}
- * @api public
- */
-
-Cache.set = function(name, value){
-
-  var parent = Cache.items
-    , seed = null
-    , seeds = name.split(help.delimiter)
-    , name = _.last(seeds)
-    ;
-
-  for(var i = 0; i < seeds.length-1; i++){
-    seed = seeds[i];
-    
-    if(!parent[seed]){
-      parent[seed] = {};
-    }
-    parent = parent[seed];
-  };
-
-  if(parent[name]){
-    parent[name].$name = name;
-    parent[name].$help = value;
-  }else{
-    parent[name] = {
-      $name: name,
-      $help: value
-    };
-  }
-  
-  return parent[name].$help;
-};
-
-/**
- * To be implemented. Removes an element from the cache container.
- * 
- * Returns the cache container.
- *
- * @param {String} name
- * @return {Object}
- * @api public
- */
-
-Cache.remove = function(name){
-  
-  // NEED TO CLEAR ALSO THE CACHE OF nodejs require
-  // with the "may" required cached object
-  // so it will be reloaded
-  // because otherwise the define function wont run again 
-  
-  return Cache.items;
-};
-
-/**
- * Empty the cache container and returns it.
- *
- * @return {Object}
- * @api public
- */
-
-Cache.clear = function(){
-  return Cache.items = {};
-};
-
-/**
- * Requires from `@node require` the missing library. 
- *
- * @param {String} name
- * @return {*|null}
- * @api private
- */
-
-Cache.require = function(name, status){
-  var seeds = null
-    , link = null
-    ;
-  
-  if(_.isArray(name)){
-    seeds = name;
-    name = name.join(help.delimiter);  
-  }else{
-    seeds = name.split(help.delimiter);
-  }
-  
-  link = namespace.get(name);
-  
-  if(!link){
-    return false;
-  }
-  
-  var req;
-  
-  try{
-    // Look for behere/lib/behere/*.js    
-    req = require(link.target + '/' + _.last(seeds, (seeds.length - link.name.split(help.delimiter).length)).join('/'));
-    
-  }catch(e){
-     
-    if(seeds.length <= 2){
-      // Look for any "behere-*" module
-      // example:
-      // behere.aaa => behere-aaa
-      req = require(name.replace('.','-'));
-      
-    }else{
-      // Look for child files "behere-*/lib/*/*"
-      // example:
-      // behere.aaa.bbb.ccc.ddd => behere-aaa/lib/aaa/bbb/ccc/ddd
-      req = [];
-      
-      for(var i=0; i<seeds.length; i++){
-        if(i===0){
-          req.push(seeds[i]);
-        }else if(i===1){
-          req[0] += ('-' + seeds[i]);
-          req.push('lib', seeds[i]);
-        }else{
-          req.push(seeds[i]);
-        }
-      };
-      
-      req = require(req.join('/'));
-      
-    }
-    
-  }
-  
-  return req;
-};
-
-/*!
- * Exports.
- */
-
-exports = module.exports = Cache;
- 
-});require.register("help/base.js", function(module, exports, require, global){
-/*!
- * Behere
- * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
- * MIT Licensed
- */
-
-var Proto = require('./proto')
-  ;
-
-/**
- * Base.
- */
-
-var Base = exports = module.exports = Proto.extend({
-  
-  //__init : 'initialize'
-  
-});
- 
-});require.register("help/proto.js", function(module, exports, require, global){
-/*!
- * Behere
+ * Bike
  * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
  * MIT Licensed
  */
@@ -632,9 +362,29 @@ var Proto = exports = module.exports = {
   
 }
 
-});require.register("help/namespace.js", function(module, exports, require, global){
+});require.register("bike/base.js", function(module, exports, require, global){
 /*!
- * Behere
+ * Bike
+ * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
+ * MIT Licensed
+ */
+
+var Proto = require('./proto')
+  ;
+
+/**
+ * Base.
+ */
+
+var Base = exports = module.exports = Proto.extend({
+  
+  //__init : 'initialize'
+  
+});
+ 
+});require.register("bike/namespace.js", function(module, exports, require, global){
+/*!
+ * Bike
  * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
  * MIT Licensed
  */
@@ -649,15 +399,15 @@ var Proto = exports = module.exports = {
  * 
  * Examples:
  * 
- *    Help.namespace()
+ *    Bike.namespace()
  *    // get all
  *    // => []
  * 
- *    Help.namespace('foo')
+ *    Bike.namespace('foo')
  *    // get
  *    // => String
  * 
- *    Help.namespace('foo', './my/path/to/it')
+ *    Bike.namespace('foo', './my/path/to/it')
  *    // set
  *    // => String
  *
@@ -768,5 +518,255 @@ Namespace.clear = function(){
 
 exports = module.exports = Namespace;
 
-});help = require('help.js');
+});require.register("bike/cache.js", function(module, exports, require, global){
+/*!
+ * Bike
+ * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
+ * MIT Licensed
+ */
+
+var bike = require('../bike')
+  , namespace = require('./namespace')
+
+
+
+
+  ;
+
+/**
+ * Manager and placeholder of the cache object.
+ * 
+ * Examples:
+ * 
+ *    Bike.cache()
+ *    // get all
+ *    // => {Object}
+ * 
+ *    Bike.cache('foo.myclass')
+ *    // get
+ *    // => {*}
+ * 
+ *    Bike.cache('foo.myclass', *)
+ *    // set
+ *    // => {*}
+ *
+ * @param {[String]} name
+ * @param {[*]} value
+ * @return {Object|*}
+ * @api public
+ */
+
+var Cache = function Cache(name, value){
+  if(!value && name){
+    value = Cache.get(name);
+    return value;
+  }else if(value && name){
+    return Cache.set.apply(this, arguments);
+  }
+  
+  return Cache.items;
+};
+
+/**
+ * Singletons container.
+ *
+ * @type {Object}
+ * @api private
+ */
+
+Cache.singletons = {};
+
+/**
+ * Cache container.
+ *
+ * @type {Object}
+ * @api private
+ */
+
+
+
+
+// if browser
+//Cache.items = window;
+// end
+  
+/**
+ * Get an element from the cache container.
+ *
+ * @param {String} name
+ * @return {*|null}
+ * @api public
+ */
+
+Cache.get = function(name){
+  if(!_.isString(name)) return name;
+  
+  var parent = Cache.items
+    , seed = null
+    , seeds = name.split(bike.delimiter)
+    , name = _.last(seeds)
+    ;
+
+  for(var i = 0; i < seeds.length-1; i++){
+    seed = seeds[i];
+    
+    if(!parent[seed]){
+      Cache.require( seeds, 0 );
+    };
+
+    parent = parent[seed];
+  };
+  
+  if(!parent[name]) {
+    Cache.require( seeds, 1 );
+  }
+  
+  return parent[name] ? parent[name].$bike : null;
+};
+
+/**
+ * Add or replace a element in the cache container.
+ *
+ * Returns the give element;
+ * 
+ * @param {String} name
+ * @param {*} value
+ * @return {*}
+ * @api public
+ */
+
+Cache.set = function(name, value){
+
+  var parent = Cache.items
+    , seed = null
+    , seeds = name.split(bike.delimiter)
+    , name = _.last(seeds)
+    ;
+
+  for(var i = 0; i < seeds.length-1; i++){
+    seed = seeds[i];
+    
+    if(!parent[seed]){
+      parent[seed] = {};
+    }
+    parent = parent[seed];
+  };
+
+  if(parent[name]){
+    parent[name].$name = name;
+    parent[name].$bike = value;
+  }else{
+    parent[name] = {
+      $name: name,
+      $bike: value
+    };
+  }
+  
+  return parent[name].$bike;
+};
+
+/**
+ * To be implemented. Removes an element from the cache container.
+ * 
+ * Returns the cache container.
+ *
+ * @param {String} name
+ * @return {Object}
+ * @api public
+ */
+
+Cache.remove = function(name){
+  
+  // NEED TO CLEAR ALSO THE CACHE OF nodejs require
+  // with the "may" required cached object
+  // so it will be reloaded
+  // because otherwise the define function wont run again 
+  
+  return Cache.items;
+};
+
+/**
+ * Empty the cache container and returns it.
+ *
+ * @return {Object}
+ * @api public
+ */
+
+Cache.clear = function(){
+  return Cache.items = {};
+};
+
+/**
+ * Requires from `@node require` the missing library. 
+ *
+ * @param {String} name
+ * @return {*|null}
+ * @api private
+ */
+
+Cache.require = function(name, status){
+  var seeds = null
+    , link = null
+    ;
+  
+  if(_.isArray(name)){
+    seeds = name;
+    name = name.join(bike.delimiter);  
+  }else{
+    seeds = name.split(bike.delimiter);
+  }
+  
+  link = namespace.get(name);
+  
+  if(!link){
+    return false;
+  }
+  
+  var req;
+  
+  try{
+    // Look for behere/lib/behere/*.js    
+    req = require(link.target + '/' + _.last(seeds, (seeds.length - link.name.split(bike.delimiter).length)).join('/'));
+    
+  }catch(e){
+     
+    if(seeds.length <= 2){
+      // Look for any "behere-*" module
+      // example:
+      // behere.aaa => behere-aaa
+      req = require(name.replace('.','-'));
+      
+    }else{
+      // Look for child files "behere-*/lib/*/*"
+      // example:
+      // behere.aaa.bbb.ccc.ddd => behere-aaa/lib/aaa/bbb/ccc/ddd
+      req = [];
+      
+      for(var i=0; i<seeds.length; i++){
+        if(i===0){
+          req.push(seeds[i]);
+        }else if(i===1){
+          req[0] += ('-' + seeds[i]);
+          req.push('lib', seeds[i]);
+        }else{
+          req.push(seeds[i]);
+        }
+      };
+      
+      req = require(req.join('/'));
+      
+    }
+    
+  }
+  
+  return req;
+};
+
+/*!
+ * Exports.
+ */
+
+exports = module.exports = Cache;
+ 
+});if ("undefined" != typeof module) { module.exports = require('bike.js'); } else { bike = require('bike.js'); }
 })();

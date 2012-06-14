@@ -5,15 +5,15 @@
   
   ## Examples
   
-     Klass.namespace()
+     Bike.namespace()
      // get all
      // => []
   
-     Klass.namespace('foo')
+     Bike.namespace('foo')
      // get
      // => String
   
-     Klass.namespace('foo', './my/path/to/it')
+     Bike.namespace('foo', './my/path/to/it')
      // set
      // => String
 

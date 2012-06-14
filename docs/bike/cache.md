@@ -5,15 +5,15 @@
   
   ## Examples
   
-     Klass.cache()
+     Bike.cache()
      // get all
      // => {Object}
   
-     Klass.cache('foo.myclass')
+     Bike.cache('foo.myclass')
      // get
      // => {*}
   
-     Klass.cache('foo.myclass', *)
+     Bike.cache('foo.myclass', *)
      // set
      // => {*}
 

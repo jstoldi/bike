@@ -1,22 +1,25 @@
 {
-  "author": "Gabriele Di Stefano <gabriele.ds@gmail.com>",
+  "author": {
+    "name": "Gabriele Di Stefano",
+    "email": "gabriele.ds@gmail.com"
+  },
   "name": "bike",
-  "description": "Behere Framework - Class System",
+  "description": "Class System - define, create, extend, mixin, super()...",
   "version": "0.5.1",
   "repository": {
     "type": "git",
     "url": "git://github.com/behere/bike.git"
   },
-  "main": "./lib/help.js",
+  "main": "./lib/bike.js",
   "engines": {
     "node": "*"
   },
   "dependencies": {
-    "uberproto": "1.x.x",
-    "underscore": "1.x.x"
+    "uberproto": "*",
+    "underscore": "*"
   },
   "devDependencies": {
-    "uglify-js": "1.x.x",
+    "uglify-js": "*",
     "wrench": "*",
     "dox": "*",
     "mocha": "*",

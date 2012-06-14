@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
-/**
- * Module dependencies.
+/*!
+ * Bike
+ * Copyright(c) 2012 Gabriele Di Stefano <gabriele.ds@gmail.com>
+ * MIT Licensed
  */
 
 var fs = require('fs');
@@ -103,11 +105,11 @@ function compile() {
     buf += js;
     buf += '\n}); // module: ' + file + '\n';
   });
-  buf += '\nwindow.klass = require("klass");\n';
+  buf += '\nwindow.bike = require("bike");\n';
   buf += '})();\n';
-  fs.writeFile('klass.js', buf, function(err){
+  fs.writeFile('bike.js', buf, function(err){
     if (err) throw err;
-    console.log('  \033[90m create : \033[0m\033[36m%s\033[0m', 'klass.js');
+    console.log('  \033[90m create : \033[0m\033[36m%s\033[0m', 'bike.js');
     console.log();
   });
 }
