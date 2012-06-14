@@ -1,11 +1,11 @@
 {
   "author": "Gabriele Di Stefano <gabriele.ds@gmail.com>",
-  "name": "help",
+  "name": "bike",
   "description": "Behere Framework - Class System",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "repository": {
     "type": "git",
-    "url": "git://github.com/behere/help.git"
+    "url": "git://github.com/behere/bike.git"
   },
   "main": "./lib/help.js",
   "engines": {
@@ -25,7 +25,7 @@
   },
   "optionalDependencies": {},
   "bin": {
-    "help": "./bin/help"
+    "help": "./bin/bike"
   },
   "scripts": {
     "prepublish": "npm prune",
