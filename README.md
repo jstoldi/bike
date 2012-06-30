@@ -1,7 +1,7 @@
 > ![Stage](https://github.com/behere/behere.github.com/raw/master/assets/stage/production.png)  
 [![Build Status](https://secure.travis-ci.org/behere/bike.png)](http://travis-ci.org/behere/bike)
 
-> version 0.5.2 (stable) - [History](https://github.com/behere/bike/blob/master/HISTORY.md)
+> version 0.5.3 (stable) - [History](https://github.com/behere/bike/blob/master/HISTORY.md)
 
 # Bike
   

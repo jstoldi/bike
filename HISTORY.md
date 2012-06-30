@@ -12,6 +12,11 @@
   * Change browser build version with https://github.com/LearnBoost/browserbuild
   * Make `version` variable replace with * directly in MakeFile
 
+0.5.3 / 2012-06-30
+------------------
+
+  * Added namespaces variable to set namespaces directly on Bike.extend
+
 0.5.2 / 2012-06-29
 ------------------
 
