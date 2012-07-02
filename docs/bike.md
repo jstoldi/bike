@@ -19,7 +19,7 @@
 
   Cache manager reference.
 
-# Bike.attach()
+# Bike.attach
 
   Attaches methods `define` and `create` on a given object.
   

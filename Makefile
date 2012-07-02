@@ -6,7 +6,7 @@ BROWSERBUILD = $(shell find node_modules -name "browserbuild" -type f)
 BROWSERBUILD_FLAGS =-b lib/ -g bike -m bike.js
 REPORTER = dot
 
-all: clean runtime.js bike.min.js test docs copy-to-repo
+all: clean runtime.js bike.min.js test docs
 
 clean:
 	@rm -rf docs
@@ -31,9 +31,5 @@ test:
 docs:
 	@mkdir -p docs/bike
 	@node ./support/docs
-
-copy-to-repo:
-	@cp bike.js ../../repository/behere/wrap-klass/debug/wrap-klass.debug.js
-	@cp bike.min.js ../../repository/behere/wrap-klass/min/wrap-klass.min.js
 
 .PHONY: clean test docs

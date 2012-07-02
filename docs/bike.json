@@ -55,12 +55,12 @@
           },
           "isPrivate": false,
           "ignore": false,
-          "code": "Bike.version = '0.5.1';",
+          "code": "Bike.version = '0.5.3';",
           "ctx": {
             "type": "property",
             "receiver": "Bike",
             "name": "version",
-            "value": "'0.5.1'",
+            "value": "'0.5.3'",
             "string": "Bike.version"
           }
         },
@@ -227,12 +227,13 @@
           },
           "isPrivate": false,
           "ignore": false,
-          "code": "Bike.attach = function(target){\n  if(target){\n    target.define = Bike.define;\n    target.create = Bike.create;\n    target.namespace = Bike.namespace;\n  }\n  \n  return Bike;\n};",
+          "code": "Bike.attach = Bike.extend = function(target, namespaces){\n  if(target){\n    target.define = Bike.define;\n    target.create = Bike.create;\n    target.namespace = Bike.namespace;\n  }\n  \n  if(namespaces){\n    Bike.namespace(namespaces);\n  }\n  \n  return Bike;\n};",
           "ctx": {
-            "type": "method",
+            "type": "property",
             "receiver": "Bike",
             "name": "attach",
-            "string": "Bike.attach()"
+            "value": "Bike.extend = function(target, namespaces){",
+            "string": "Bike.attach"
           }
         },
         {
@@ -587,7 +588,7 @@
           },
           "isPrivate": false,
           "ignore": false,
-          "code": "var Namespace = function Namespace(name, value){\n  if(!value && name){\n    value = Namespace.get(name);\n    return value ? value.target : null;\n  }else if(value && name){\n    return Namespace.set.apply(this, arguments);\n  }\n  \n  return Namespace.items;\n};",
+          "code": "var Namespace = function Namespace(name, value){\n  if(_.isString(name)){\n    //single\n    if(!value && name){\n      value = Namespace.get(name);\n      return value ? value.target : null;\n    }else if(value && name){\n      return Namespace.set.apply(this, arguments);\n    }\n  }else{\n    //multiple\n    for(var i in name){\n      Namespace(i, name[i]);\n    }\n  }\n  return Namespace.items;\n};",
           "ctx": {
             "type": "function",
             "name": "Namespace",

@@ -29,7 +29,7 @@ var Bike = exports = module.exports = function Bike(){
  * @api public
  */
 
-Bike.version = '0.5.1';
+Bike.version = '0.5.3';
   
 /**
  * Delimiter used among namespaces.
@@ -82,11 +82,15 @@ Bike.base = require('./bike/base');;
  * @api public
  */
 
-Bike.attach = function(target){
+Bike.attach = Bike.extend = function(target, namespaces){
   if(target){
     target.define = Bike.define;
     target.create = Bike.create;
     target.namespace = Bike.namespace;
+  }
+  
+  if(namespaces){
+    Bike.namespace(namespaces);
   }
   
   return Bike;
@@ -418,13 +422,20 @@ var Base = exports = module.exports = Proto.extend({
  */
 
 var Namespace = function Namespace(name, value){
-  if(!value && name){
-    value = Namespace.get(name);
-    return value ? value.target : null;
-  }else if(value && name){
-    return Namespace.set.apply(this, arguments);
+  if(_.isString(name)){
+    //single
+    if(!value && name){
+      value = Namespace.get(name);
+      return value ? value.target : null;
+    }else if(value && name){
+      return Namespace.set.apply(this, arguments);
+    }
+  }else{
+    //multiple
+    for(var i in name){
+      Namespace(i, name[i]);
+    }
   }
-  
   return Namespace.items;
 };
 
