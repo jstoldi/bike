@@ -15,7 +15,6 @@
     "node": "*"
   },
   "dependencies": {
-    "uberproto": "*",
     "underscore": "*"
   },
   "devDependencies": {
@@ -28,7 +27,7 @@
   },
   "optionalDependencies": {},
   "bin": {
-    "help": "./bin/bike"
+    "bike": "./bin/bike"
   },
   "scripts": {
     "prepublish": "npm prune",
