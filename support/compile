@@ -16,8 +16,6 @@ var args = process.argv.slice(2)
   , pending = args.length
   , files = {};
 
-console.log('');
-
 // parse arguments
 
 args.forEach(function(file){
