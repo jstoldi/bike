@@ -4,7 +4,7 @@
     "email": "gabriele.ds@gmail.com"
   },
   "name": "bike",
-  "description": "Class system to organize namespaces, define, create, extend, mixin, super inheritance and more",
+  "description": "Class system to organize namespaces, define, create, extend, mixin, super inheritance and more.",
   "version": "0.5.4",
   "repository": {
     "type": "git",
