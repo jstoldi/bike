@@ -4,7 +4,7 @@
     "email": "gabriele.ds@gmail.com"
   },
   "name": "bike",
-  "description": "Class System - define, create, extend, mixin, super()...",
+  "description": "Class system to organize namespaces, define, create, extend, mixin, super inheritance and more",
   "version": "0.5.4",
   "repository": {
     "type": "git",
@@ -33,14 +33,5 @@
   "scripts": {
     "prepublish": "npm prune",
     "test": "make test"
-  },
-  "_id": "bike@0.5.1",
-  "_engineSupported": true,
-  "_npmVersion": "1.1.25",
-  "_nodeVersion": "v0.7.10",
-  "_defaultsLoaded": true,
-  "dist": {
-    "shasum": "3776efa0ec1f5d109419e0ba81d1c40a11845df9"
-  },
-  "_from": "bike@0.5.1"
+  }
 }
