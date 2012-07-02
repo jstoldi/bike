@@ -12,7 +12,7 @@ var dox = require('dox')
   , wrench = require('wrench')
   ;
 
-/**
+/*!
  * Make docs.
  */
 
