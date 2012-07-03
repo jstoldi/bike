@@ -74,7 +74,7 @@ var Bike = exports = module.exports = function Bike(){
  * @api public
  */
 
-Bike.version = '0.5.3';
+Bike.version = '0.5.4';
   
 /**
  * Delimiter used among namespaces.
@@ -319,7 +319,7 @@ var Proto = exports = module.exports = {
   
   create: function(){
     var instance = Object.create(this)
-      , init = _.isString(instance.__init) ? instance.__init : 'init'
+      , init = _.isString(instance.__init) ? instance.__init : 'initialize'
       ;
       
     if(_.isFunction(instance[init])){

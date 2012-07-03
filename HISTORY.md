@@ -8,9 +8,13 @@
   * Add examples on code comments
   * Make README usage documentation
   * Add singletons get/set/remove (used by klass#create()) in the cache object
-  * Make `initialize` the default init method
   * Change browser build version with https://github.com/LearnBoost/browserbuild
   * Make `version` variable replace with * directly in MakeFile
+
+0.5.4 / 2012-07-04
+------------------
+
+  * Made `initialize` the default init method
 
 0.5.3 / 2012-06-30
 ------------------
