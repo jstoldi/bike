@@ -5,9 +5,20 @@
 
 # Bike
   
-  Organize your classes through namespaces, extend or mix them.
+  Organize your classes in namespaces, extend or mix them. Bike helps your keep your project in order.
   
-  This module can be used `standalone` or inside [behere framework](http://github.com/behere/behere) as `behere.bike`.
+  This module can be used with `node` or in the `browser`.
+
+## Features
+  
+  * namespaces
+  * extend (inheritance like)
+  * mixin
+  * super methods
+  * self require dependencies
+  * cache
+
+  * extjs like syntax
 
 ## Installation
 
