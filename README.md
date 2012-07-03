@@ -24,6 +24,8 @@ Install this using `npm` as follows
 
     $ npm install bike
 
+## Quick start
+
 ### Define a class
 
 This will *register* a class.
