@@ -35,46 +35,62 @@ This will *register* a class.
 ```javascript
 var Bike = require('bike');
 
-Bike.define('animal', {
-  move: function(){
-    return 'i move'
+Bike.define('person', {
+  talk: function(){
+    return 'Ciao, i am a person'
   }
 });
-
-Bike.create('animal').move();
-// => 'i move'
 ```
-
-behere use: `behere.define()`
 
 ### Create a class
 
+This will *instantiate* a new object.
+
 ```javascript
-var animal = Bike.create('animal');
+var person = Bike.create('person');
 
-animal.move();
-// => 'i move'
+person.talk();
+// => Ciao, i am a person
 ```
-
-behere use: `behere.create()`
 
 ### Extend a class
 
-Extending a class will allow to inherit all the properties and methods from the extended object.
+Extending a class will allow to inherit all properties and methods from the extended object.
+
 To call the parent method use the `this._super()` syntax.
 
 ```javascript
-Bike.define('cat', {
-  extend: 'animal',
-  move: function(){
-    return this._super() + ', run and jump'
+Bike.define('singer', {
+  extend: 'person',
+  talk: function(){
+    return this._super() + ' and a good singer!'
+  },
+  sing: function(){
+    return 'I can sing'
   }
 });
 
-var cat = Bike.create('cat');
+var singer = Bike.create('singer');
 
-cat.move();
-// => 'i move, run and jump'
+singer.talk();
+// => Ciao, i am a person and a good singer!
+```
+
+Optionally you can also give properies or methods that will extend the new object just created. Not its definition.
+
+```javascript
+var frank = Bike.create('singer', {
+  name: 'Frank',
+  sing: function(){
+    return this._super() + ' songs.'
+  }
+});
+
+frank.name;
+// => Frank
+
+frank.sing();
+// => I can sing songs.
 ```
 
 ### Use namespaces
