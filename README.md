@@ -5,7 +5,7 @@
 
 # Bike
   
-  Organize your classes in namespaces, extend or mix them. Bike helps you keep your project in order.
+  Organize your classes in namespaces, extend or mix them. Bike helps you keep your project clear and in order.
   
   This module can be used with `node` or in the `browser`.
 
@@ -18,15 +18,11 @@
   * self require dependencies
   * cache
 
-  * extjs like syntax
-
 ## Installation
 
-Install this using `npm` as follows for standalone use
+Install this using `npm` as follows
 
     $ npm install bike
-
-## Quick Start
 
 ### Define a class
 
@@ -131,7 +127,7 @@ Bike.define('people.architect', {
 });
 ```
 
-### Attach Bike to your module
+### Extend your own class with Bike
 
 It is possible to extend your own class/module/project with Bike's functionality.
 
