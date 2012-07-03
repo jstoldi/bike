@@ -76,7 +76,7 @@ singer.talk();
 // => Ciao, i am a person and a good singer!
 ```
 
-Optionally you can also give properies or methods that will extend the new object just created. Not its definition.
+Optionally you can also give properies or methods that will extend the new object just created, not its definition.
 
 ```javascript
 var frank = Bike.create('singer', {
@@ -93,36 +93,29 @@ frank.sing();
 // => I can sing songs.
 ```
 
-### Use namespaces
+### Define namespaces
 
-The namespace will bike you organize classes in a tree structure.
+The namespace will help you organize classes in a tree structure.
 
 ```javascript
-Bike.define('animal', {
+Bike.namespace('people', __dirname + '/jobs');
+```
+
+Now when you create a class `people.*` it will automatically require it from the folder `/jobs`.
+
+```javascript
+Bike.define('people.architect', {
   /* ... */
 });
+// => will look for '/jobs/architect.js'
 
-Bike.define('animal.cat', {
-  extend: 'animal'
-  /* ... */
+// OR
+
+Bike.define('people.architect', {
+  extend: 'people.general.worker'
 });
-
-Bike.define('animal.cat.Sophie', {
-  extend: 'animal.cat'
-  /* ... */
-});
-
-// And more..
-
-Bike.define('animal.dog', {
-  extend: 'animal'
-  /* ... */
-});
-
-Bike.define('Monkey', {  // Monkey is the name of my dog :-)
-  extend: 'animal.dog'
-  /* ... */
-});
+// => will look for '/jobs/architect.js' extending '/jobs/general/worker.js'
+// No need to require('/jobs/architect.js') or not require('/jobs/general/worker.js')
 ```
 
 ### Load missing libraries
