@@ -5,7 +5,7 @@
 
 # Bike
   
-  Organize your classes in namespaces, extend or mix them. Bike helps your keep your project in order.
+  Organize your classes in namespaces, extend or mix them. Bike helps you keep your project in order.
   
   This module can be used with `node` or in the `browser`.
 
