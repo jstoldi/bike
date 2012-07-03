@@ -118,30 +118,42 @@ Bike.define('people.architect', {
 // No need to require('/jobs/architect.js') or not require('/jobs/general/worker.js')
 ```
 
-### Load missing libraries
+### Mixing classes
 
-In most of the cases your code will need to `require` libraries.
-With *Bike* what you need to do it so define namespaces and its system location.
-
-```javascript
-Bike.namespace('foo', '/my/path/to/it');
-
-Bike.create('foo.animal');
-// => this will create a class defined in '/my/path/to/it/animal.js'
-```
-
-Works the same extending or mixing:
+You could also borrow properties or methods from other classes beside direct extending
 
 ```javascript
-Bike.define('Sophie', {
-  extend: 'foo.animal.cat'
+Bike.define('people.architect', {
+  mixins: [
+    'people.general.engineer',
+    'freetime.runner'
+  ]
 });
-// => This will extend the class defined in '/my/path/to/it/animal/cat.js'
 ```
 
-## Features
+### Attach Bike to your module
 
-  * ...
+It is possible to extend your own class/module/project with Bike's functionality.
+
+```javascript
+var myClass = function(){/**/};
+myClass.version = '0.0.0';
+myClass.ciao = function(){};
+
+/* ... */
+
+Bike.extend(myClass);
+
+// Now you can do
+myClass.define('...', {});
+// and
+myClass.create('...');
+
+// Optionally you can also pass namespaces directly into the extend fn
+Bike.extend(myClass, {
+  'people', __dirname + '/jobs'
+})
+```
 
 ## Running Tests
 
