@@ -88,7 +88,7 @@ frank.name;
 // => Frank
 
 frank.sing();
-// => I can sing songs.
+// => I can sing songs
 ```
 
 ### Define namespaces
