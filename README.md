@@ -165,6 +165,7 @@ Install dev dependencies and make tests:
 ```
 Gabriele Di Stefano <gabriele.ds@gmail.com>
 ```
+[![endorse](http://api.coderwall.com/gabrieleds/endorsecount.png)](http://coderwall.com/gabrieleds)
 
 ![Behere Logo](https://github.com/behere/behere.github.com/raw/master/assets/behere_logo.png)
 
